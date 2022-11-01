@@ -1,0 +1,75 @@
+.outlineCardWrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.Cards .outlineCard {
+  background-color: unset;
+  color: #5bc0be;
+  border: 4px solid #5bc0be;
+  border-radius: 1vw;
+  box-shadow: 0 0 0.2rem #5bc0be, 0 0 0.2rem #5bc0be, inset 0 0 0.5rem #6fffe9;
+  animation: pulsate 1.5s infinite alternate;
+  justify-content: space-around;
+  align-content: stretch;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+  max-height: 9.5vh;
+  transition: max-height 1.25s ease-in-out;
+}
+
+.Cards .project {
+  top: -0.5vw;
+  position: absolute;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.Cards .project p {
+  background-color: #0a0a34;
+  border: 1.5px solid #5bc0be;
+  padding: 4px;
+  /*  font-size: 1.5vw; */
+  margin: 0;
+  color: white;
+}
+
+.Cards .outlineCard:hover {
+  max-height: 100vh;
+  transition: max-height 1.25s ease-in-out;
+}
+
+.Cards .outlineCard.clicked {
+  max-height: 100vh;
+  transition: max-height 1.25s ease-in-out;
+}
+
+.Cards .outlineCardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Cards .outlineCardHeader p {
+  margin: 0;
+  /* font-size: 2vw; */
+}
+
+.Cards .outlineCardHeader p.pile {
+  color: #be27c4;
+}
+
+.Cards .outlineCardSubHeader {
+  margin: 0;
+  text-align: left;
+}
+
+.Cards .DetailsPreview {
+  display: flex;
+  justify-content: space-between;
+}

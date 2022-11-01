@@ -1,0 +1,287 @@
+.plantCount {
+  width: 100%;
+}
+
+.form {
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  font-size: 1vw;
+  position: sticky;
+  top: 0;
+  height: 4vh;
+  background: #b6ccf5;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: center;
+  column-gap: 1vw;
+}
+
+.formLeft {
+  display: flex;
+  font-size: 1.5vw;
+  align-items: stretch;
+}
+
+.formLeft p {
+  margin: 0;
+}
+
+.form input[type="text"] {
+  font-size: 1.5vw;
+  width: 3vw;
+  font-weight: bold;
+}
+
+.form input[type="submit"] {
+  font-size: 1.5vw;
+  width: 7vw;
+  font-weight: bold;
+}
+
+.tableDiv {
+  display: block;
+  overflow: auto;
+  height: 75vh;
+  width: 90vw;
+  top: 0;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closeTable {
+  position: fixed;
+  right: 1vw;
+  z-index: 5;
+}
+
+.tableInnerDiv {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+table {
+  border-spacing: 0;
+  table-layout: auto;
+  width: 100%;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background: #b6ccf5;
+  z-index: 4;
+}
+
+thead tr {
+  border-bottom: 1px solid #32b3b0;
+}
+
+.mainHeader {
+  font-size: 2vw;
+}
+
+th {
+  margin: 0;
+  border-right: 1px solid #32b3b0;
+  border-top: 1px solid #32b3b0;
+  border-left: 1px solid #32b3b0;
+  border-bottom: 1px solid #32b3b0;
+}
+
+td {
+  border-right: 1px solid #32b3b0;
+  border-bottom: 1px solid #32b3b0;
+  border-left: 1px solid #32b3b0;
+  text-align: center;
+}
+
+th.nonInterval {
+  position: relative;
+  /*  width: 12vw; */
+  height: 8vh;
+  white-space: normal;
+  background: #b6ccf5;
+}
+
+th.vertical {
+  writing-mode: vertical-lr;
+  /*  width: 3vw; */
+}
+
+/* th.nonInterval.nonIntervalFirst {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+th.nonInterval.nonIntervalSecond {
+  position: sticky;
+  left: 5vw;
+  z-index: 1;
+}
+
+th.nonInterval.nonIntervalThird {
+  position: sticky;
+  left: 10vw;
+  z-index: 1;
+} */
+
+th.withUnit div.columnFlex,
+th.Ref_Level div.columnFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+th div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+th span {
+  flex: 1;
+}
+
+th.hide {
+  display: none;
+}
+
+th.show {
+  display: table-cell;
+}
+
+td.hide {
+  display: none;
+}
+
+td.show {
+  display: table-cell;
+}
+
+td.interval {
+  font-size: 0;
+  /*  min-width: 1vw; */
+  border-right: none;
+}
+
+/* td.vertical.nonInterval {
+  width: fit-content;
+} */
+
+td.nonInterval {
+  white-space: normal;
+  background: white /*  !important */;
+  /* width: fit-content; */
+  height: 2vh;
+}
+
+td.nonInterval.Time_Slot {
+  white-space: nowrap;
+  background: white /*  !important */;
+  /* width: fit-content; */
+  height: 2vh;
+}
+
+td.nonInterval input[type="number"] {
+  width: 5vw;
+}
+
+.columnGroup {
+  background: rgb(136 200 207 / 42%) !important;
+}
+
+.avgColumnGroup {
+  background: rgb(124 180 230 / 42%) !important;
+}
+
+.operatorColumnGroup {
+  background: rgb(136 153 207 / 42%) !important;
+}
+
+.holiday {
+  color: red;
+}
+
+/* td.nonInterval.nonIntervalFirst {
+  position: sticky;
+  left: 0;
+}
+
+td.nonInterval.nonIntervalSecond {
+  position: sticky;
+  left: 5vw;
+}
+
+td.nonInterval.nonIntervalThird {
+  position: sticky;
+  left: 10vw;
+} */
+
+.MutatingDots {
+  width: 100vw;
+  height: 97vh;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 320px) and (orientation: portrait) {
+  td.nonInterval input[type="number"] {
+    width: 10vw;
+  }
+
+  th.vertical {
+    writing-mode: vertical-lr;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 320px) and (orientation: landscape) {
+  td.nonInterval input[type="number"] {
+    width: 10vw;
+  }
+  th.vertical {
+    writing-mode: horizontal-tb;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  td.nonInterval input[type="number"] {
+    width: 10vw;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  td.nonInterval input[type="number"] {
+    width: 5vw;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  td.nonInterval input[type="number"] {
+    width: 5vw;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  td.nonInterval input[type="number"] {
+    width: 5vw;
+  }
+}
