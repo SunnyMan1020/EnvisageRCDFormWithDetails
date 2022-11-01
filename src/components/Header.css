@@ -1,0 +1,15 @@
+.header {
+  text-align: left;
+  color: white;
+  display: flex;
+  width: calc(100% - 4vw);
+  margin-left: 2vw;
+  margin-right: 2vw;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.header p {
+  font-size: 3vw;
+}
