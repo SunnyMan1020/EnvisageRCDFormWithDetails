@@ -13,6 +13,7 @@ function Cards(props) {
               timeSlotRecord={props.formDetailsDataForCards.filter((temp) => {
                 return temp.Time === record.Time;
               })}
+              setAddedNew={props.setAddedNew}
             />
           );
         })}

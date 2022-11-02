@@ -94,6 +94,7 @@ function App() {
       <Cards
         dataForCards={dataForCards}
         formDetailsDataForCards={formDetailsDataForCards}
+        setAddedNew={setAddedNew}
       />
     </div>
   );

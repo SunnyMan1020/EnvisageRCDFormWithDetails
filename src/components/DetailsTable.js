@@ -6,6 +6,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import ToggleButton from "@mui/material/ToggleButton";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { PropaneSharp } from "@mui/icons-material";
 
 export default function DetailsTable(props) {
   const [data, setData] = useState([
@@ -1153,6 +1154,9 @@ export default function DetailsTable(props) {
 
   function closeTable() {
     props.setToggleTable(false);
+    props.setAddedNew(true);
+    /*  props.setReady(false); */
+    props.setSummary([]);
   }
 
   function toggleSelect(value, column, row) {
