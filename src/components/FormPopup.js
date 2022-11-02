@@ -128,9 +128,8 @@ export default function FormPopup(props) {
       Object.values(record).every((currentValue) => currentValue !== "") &&
       readyToSubmit
     ) {
-      /*       var insertFormUrl = "https://envisagepj005.azurewebsites.net/insertForm";
-       */
-      var insertFormUrl = "http://localhost:3000/insertFormTemp";
+      var insertFormUrl =
+        "https://envisagepj005.azurewebsites.net/insertFormTemp";
       const options = {
         method: "POST",
         headers: {
