@@ -13,36 +13,11 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [addedNew, setAddedNew] = useState(false);
 
-  /*   useEffect(() => {
-    console.log(DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"));
-    async function getData() {
-     var getDataUrl = "http://localhost:3000/getNewFormByDate";
-
-      var bodyData = {
-        date: DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"),
-      };
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bodyData),
-      };
-      const response = await fetch(getDataUrl, options);
-      const data = await response.json();
-      setDataForCards(data);
-      console.log("data", data);
-    }
-    if (prevDateUsingRef.current !== undefined)
-      if (dateUsing.getTime() !== prevDateUsingRef.current.getTime()) getData();
-  }, [dateUsing]); */
-
   useEffect(() => {
     console.log(DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"));
     async function getData() {
-      /*       var getDataUrl = "https://envisagepj005.azurewebsites.net/getFormByDate";
-       */
-      var getDataUrl = "http://localhost:3000/getNewFormByDate";
+      var getDataUrl =
+        "https://envisagepj005.azurewebsites.net/getNewFormByDate";
       var bodyData = {
         date: DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"),
       };
@@ -61,9 +36,8 @@ function App() {
     }
 
     async function getFormDetailsData() {
-      /*       var getDataUrl = "https://envisagepj005.azurewebsites.net/getFormByDate";
-       */
-      var getDataUrl = "http://localhost:3000/getAllFormRecordDetails";
+      var getDataUrl =
+        "https://envisagepj005.azurewebsites.net/getAllFormRecordDetails";
       var bodyData = {
         date: DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"),
       };

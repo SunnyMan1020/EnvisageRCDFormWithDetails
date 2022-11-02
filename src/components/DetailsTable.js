@@ -1076,7 +1076,8 @@ export default function DetailsTable(props) {
 
   useEffect(() => {
     async function getTimeSlotData() {
-      var getDataUrl = "http://localhost:3000/getFormRecordDetails";
+      var getDataUrl =
+        "https://envisagepj005.azurewebsites.net/getFormRecordDetails";
 
       const options = {
         method: "POST",
@@ -1121,7 +1122,8 @@ export default function DetailsTable(props) {
   useEffect(() => {
     if (Object.keys(dataToFetch).length) {
       console.log("dataToFetch", dataToFetch);
-      var mergeDataUrl = "http://localhost:3000/mergeFormDetails";
+      var mergeDataUrl =
+        "https://envisagepj005.azurewebsites.net/mergeFormDetails";
       const options = {
         method: "POST",
         headers: {
@@ -1154,45 +1156,6 @@ export default function DetailsTable(props) {
   }
 
   function toggleSelect(value, column, row) {
-    /*   function sendToSQL() {
-      console.log("data", data);
-      var temp = structuredClone(data);
-      console.log("temp sendToSQL", temp);
-      var dt = new Date();
-      var keyToChange = column.Header;
-      var desire = temp.find((tempRow, index) => {
-        return tempRow.Time_Slot === row.original.Time_Slot;
-      });
-      console.log("desire", desire);
-      var fetchBody = structuredClone(desire);
-      fetchBody[keyToChange] = !fetchBody[keyToChange];
-      fetchBody["RecordId"] = props.record.RecordId;
-      fetchBody["Date"] = props.record.Date;
-      fetchBody["Time_Slot_SubmitTime"] = new Date(
-        dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
-      ).toISOString();
-      fetchBody["Depth"] =
-        fetchBody["Depth"] === "" ? null : fetchBody["Depth"];
-      fetchBody["Ref_Level"] =
-        fetchBody["Ref_Level"] === "" ? null : fetchBody["Ref_Level"];
-      console.log(fetchBody);
-
-      var mergeDataUrl = "http://localhost:3000/mergeFormDetails";
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fetchBody),
-      };
-      fetch(mergeDataUrl, options);
-    }
-    if (data.length > 0) {
-      console.log("Checkbox changed, run sendToSQL");
-      console.log(usedDataFromSQL);
-      sendToSQL();
-    } */
-
     console.log(value);
     console.log(column);
     console.log(row);
@@ -1274,7 +1237,8 @@ export default function DetailsTable(props) {
         desire["Ref_Level"] === "" ? null : desire["Ref_Level"];
       console.log(desire);
 
-      var mergeDataUrl = "http://localhost:3000/mergeFormDetails";
+      var mergeDataUrl =
+        "https://envisagepj005.azurewebsites.net/mergeFormDetails";
       const options = {
         method: "POST",
         headers: {
