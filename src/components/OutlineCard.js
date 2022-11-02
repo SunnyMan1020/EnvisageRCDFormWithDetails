@@ -289,7 +289,7 @@ export default function OutlineCard(props) {
                           .filter((obj) => {
                             return obj.Time_Slot === temp.Time_Slot;
                           })[0]
-                          .Grade.join(",")}
+                          ?.Grade.join(",")}
                       </Typography>
                     </Fragment>
                   )}
@@ -336,7 +336,7 @@ export default function OutlineCard(props) {
                           .filter((obj) => {
                             return obj.Time_Slot === temp.Time_Slot;
                           })[0]
-                          .Action.join(",")}
+                          ?.Action.join(",")}
                       </Typography>
                     </Fragment>
                   )}
@@ -380,7 +380,13 @@ export default function OutlineCard(props) {
         </div>
       </div>
       {toggleTable && (
-        <DetailsTable record={props.record} setToggleTable={setToggleTable} />
+        <DetailsTable
+          record={props.record}
+          setToggleTable={setToggleTable}
+          setAddedNew={props.setAddedNew}
+          setReady={setReady}
+          setSummary={setSummary}
+        />
       )}
     </Fragment>
   );
