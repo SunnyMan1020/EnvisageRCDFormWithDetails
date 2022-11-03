@@ -104,13 +104,14 @@ td {
 th.nonInterval {
   position: relative;
   /*  width: 12vw; */
-  height: 8vh;
+  /* height: 8vh; */
   white-space: normal;
   background: #b6ccf5;
 }
 
 th.vertical {
   writing-mode: vertical-lr;
+  white-space: nowrap;
   /*  width: 3vw; */
 }
 
@@ -245,6 +246,8 @@ td.nonInterval.nonIntervalThird {
 
   th.vertical {
     writing-mode: vertical-lr;
+    white-space: nowrap;
+    padding: 5px;
   }
 }
 
