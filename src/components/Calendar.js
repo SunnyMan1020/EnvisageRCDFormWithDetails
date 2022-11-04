@@ -10,7 +10,7 @@ registerLocale("zhHK", zhHK);
 export default function Calendar(props) {
   return (
     <div className="calendar">
-      <CalendarTodayIcon />
+      <CalendarTodayIcon sx={{ color: "white" }} />
       <DatePicker
         title="dateUsing"
         selected={props.Date}
@@ -18,6 +18,7 @@ export default function Calendar(props) {
           props.prevDateUsingRef.current = props.Date;
           props.setDate(date);
         }}
+        dateFormat="yyyy年MM月dd日"
         locale="zhHK"
       />
     </div>

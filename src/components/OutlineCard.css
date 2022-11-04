@@ -8,7 +8,7 @@
   color: #5bc0be;
   border: 4px solid #5bc0be;
   border-radius: 1vw;
-  box-shadow: 0 0 0.2rem #5bc0be, 0 0 0.2rem #5bc0be, inset 0 0 0.5rem #6fffe9;
+  box-shadow: 0 0 0.2rem #5bc0be, inset 0 0 0.3rem #6fffe9;
   animation: pulsate 1.5s infinite alternate;
   justify-content: space-around;
   align-content: stretch;
@@ -16,7 +16,8 @@
   position: relative;
   margin: auto;
   padding: 10px;
-  max-height: 9.5vh;
+  max-height: 20vh;
+  border-radius: 10px;
   transition: max-height 1.25s ease-in-out;
 }
 
@@ -38,6 +39,7 @@
   /*  font-size: 1.5vw; */
   margin: 0;
   color: white;
+  white-space: nowrap;
 }
 
 /* .Cards .outlineCard:hover {
@@ -61,7 +63,7 @@
 }
 
 .Cards .outlineCardHeader p.pile {
-  color: #be27c4;
+  color: #ff78c8;
 }
 
 .Cards .outlineCardSubHeader {
