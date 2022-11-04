@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect } from "react";
+import { useState, Fragment, useEffect, useRef } from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
@@ -22,9 +22,20 @@ export default function OutlineCard(props) {
 
   function expandAndScroll(e) {
     console.log(e);
-    if (e.target.classList.contains("clicked"))
+    if (e.target.classList.contains("clicked")) {
       e.target.classList.remove("clicked");
-    else e.target.classList.add("clicked");
+      setDivExpand(false);
+    } else {
+      e.target.classList.add("clicked");
+      setDivExpand(true);
+    }
+    const card = cardRef.current;
+    if (card) {
+      card.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   }
 
   function filterItems(arr) {
@@ -33,6 +44,8 @@ export default function OutlineCard(props) {
     });
   }
 
+  const cardRef = useRef();
+  const [divExpand, setDivExpand] = useState(false);
   const [toggleTable, setToggleTable] = useState(false);
   const [ready, setReady] = useState(false);
   const [summary, setSummary] = useState([]);
@@ -106,18 +119,41 @@ export default function OutlineCard(props) {
 
   return (
     <Fragment>
-      <div className="outlineCardWrapper">
+      <div className="outlineCardWrapper" ref={cardRef}>
         <Card
           sx={{
             width: {
-              xs: "70vw", // theme.breakpoints.up('xs')
-              sm: "60vw", // theme.breakpoints.up('sm')
-              md: "50vw", // theme.breakpoints.up('md')
-              lg: "40vw", // theme.breakpoints.up('lg')
-              xl: "30vw", // theme.breakpoints.up('xl')
+              xs: "90vw", // theme.breakpoints.up('xs')
+              sm: "80vw", // theme.breakpoints.up('sm')
+              md: "52vw", // theme.breakpoints.up('md')
+              lg: "45vw", // theme.breakpoints.up('lg')
+              xl: "33vw", // theme.breakpoints.up('xl')
+            },
+            maxHeight: {
+              xs: "28vh", // theme.breakpoints.up('xs')
+              sm: "40vh", // theme.breakpoints.up('sm')
+              md: "40vh", // theme.breakpoints.up('md')
+              lg: "40h", // theme.breakpoints.up('lg')
+              xl: "34vh", // theme.breakpoints.up('xl')
+            },
+            backgroundColor: "unset",
+            color: "#5bc0be",
+            border: "4px solid #5bc0be",
+            borderRadius: "1vw",
+            boxShadow: "0 0 0.2rem #5bc0be, inset 0 0 0.3rem #6fffe9",
+            animation: "pulsate 1.5s infinite alternate",
+            justifyContent: "space-around",
+            alignContent: "stretch",
+            alignItems: "center",
+            position: "relative",
+            margin: "auto",
+            padding: "10px",
+            transition: "max-height 1s ease",
+            "&.clicked": {
+              maxHeight: "100vh",
+              transition: "max-height 2s ease",
             },
           }}
-          className="outlineCard"
           onClick={expandAndScroll}
         >
           <CardHeader
@@ -132,11 +168,11 @@ export default function OutlineCard(props) {
                 <Typography
                   sx={{
                     fontSize: {
-                      xs: "3.5vw", // theme.breakpoints.up('xs')
-                      sm: "3vw", // theme.breakpoints.up('sm')
-                      md: "2.5vw", // theme.breakpoints.up('md')
-                      lg: "2vw", // theme.breakpoints.up('lg')
-                      xl: "1.5vw", // theme.breakpoints.up('xl')
+                      xs: "5.5vw", // theme.breakpoints.up('xs')
+                      sm: "5vw", // theme.breakpoints.up('sm')
+                      md: "3.5vw", // theme.breakpoints.up('md')
+                      lg: "3vw", // theme.breakpoints.up('lg')
+                      xl: "2.5vw", // theme.breakpoints.up('xl')
                     },
                   }}
                 >
@@ -146,11 +182,11 @@ export default function OutlineCard(props) {
                   className="pile"
                   sx={{
                     fontSize: {
-                      xs: "3.5vw", // theme.breakpoints.up('xs')
-                      sm: "3vw", // theme.breakpoints.up('sm')
-                      md: "2.5vw", // theme.breakpoints.up('md')
-                      lg: "2vw", // theme.breakpoints.up('lg')
-                      xl: "1.5vw", // theme.breakpoints.up('xl')
+                      xs: "5.5vw", // theme.breakpoints.up('xs')
+                      sm: "5vw", // theme.breakpoints.up('sm')
+                      md: "3.5vw", // theme.breakpoints.up('md')
+                      lg: "3vw", // theme.breakpoints.up('lg')
+                      xl: "2.5vw", // theme.breakpoints.up('xl')
                     },
                   }}
                 >
@@ -163,11 +199,11 @@ export default function OutlineCard(props) {
                 className="outlineCardSubHeader"
                 sx={{
                   fontSize: {
-                    xs: "3vw", // theme.breakpoints.up('xs')
-                    sm: "2.5vw", // theme.breakpoints.up('sm')
-                    md: "2vw", // theme.breakpoints.up('md')
-                    lg: "1.5vw", // theme.breakpoints.up('lg')
-                    xl: "1vw", // theme.breakpoints.up('xl')
+                    xs: "5.5vw", // theme.breakpoints.up('xs')
+                    sm: "5vw", // theme.breakpoints.up('sm')
+                    md: "3.5vw", // theme.breakpoints.up('md')
+                    lg: "3vw", // theme.breakpoints.up('lg')
+                    xl: "2.5vw", // theme.breakpoints.up('xl')
                   },
                 }}
               >
@@ -176,15 +212,25 @@ export default function OutlineCard(props) {
             }
           />
 
-          <CardContent sx={{ pointerEvents: "none", padding: "0px" }}>
+          <CardContent
+            sx={{
+              pointerEvents: "none",
+              padding: "0px",
+              background: "#164765",
+              border: "1px solid grey",
+              borderRadius: "1vw",
+              marginBottom: "1vh",
+              opacity: divExpand ? 1 : 0,
+            }}
+          >
             <Typography
               sx={{
                 fontSize: {
-                  xs: "3vw", // theme.breakpoints.up('xs')
-                  sm: "2.5vw", // theme.breakpoints.up('sm')
-                  md: "2vw", // theme.breakpoints.up('md')
-                  lg: "1.5vw", // theme.breakpoints.up('lg')
-                  xl: "1vw", // theme.breakpoints.up('xl')
+                  xs: "4vw", // theme.breakpoints.up('xs')
+                  sm: "3.5vw", // theme.breakpoints.up('sm')
+                  md: "3vw", // theme.breakpoints.up('md')
+                  lg: "2.5vw", // theme.breakpoints.up('lg')
+                  xl: "2vw", // theme.breakpoints.up('xl')
                 },
               }}
               variant="body1"
@@ -195,11 +241,11 @@ export default function OutlineCard(props) {
             <Typography
               sx={{
                 fontSize: {
-                  xs: "3vw", // theme.breakpoints.up('xs')
-                  sm: "2.5vw", // theme.breakpoints.up('sm')
-                  md: "2vw", // theme.breakpoints.up('md')
-                  lg: "1.5vw", // theme.breakpoints.up('lg')
-                  xl: "1vw", // theme.breakpoints.up('xl')
+                  xs: "4vw", // theme.breakpoints.up('xs')
+                  sm: "3.5vw", // theme.breakpoints.up('sm')
+                  md: "3vw", // theme.breakpoints.up('md')
+                  lg: "2.5vw", // theme.breakpoints.up('lg')
+                  xl: "2vw", // theme.breakpoints.up('xl')
                 },
               }}
               variant="body1"
@@ -210,11 +256,11 @@ export default function OutlineCard(props) {
             <Typography
               sx={{
                 fontSize: {
-                  xs: "3vw", // theme.breakpoints.up('xs')
-                  sm: "2.5vw", // theme.breakpoints.up('sm')
-                  md: "2vw", // theme.breakpoints.up('md')
-                  lg: "1.5vw", // theme.breakpoints.up('lg')
-                  xl: "1vw", // theme.breakpoints.up('xl')
+                  xs: "4vw", // theme.breakpoints.up('xs')
+                  sm: "3.5vw", // theme.breakpoints.up('sm')
+                  md: "3vw", // theme.breakpoints.up('md')
+                  lg: "2.5vw", // theme.breakpoints.up('lg')
+                  xl: "2vw", // theme.breakpoints.up('xl')
                 },
               }}
               variant="body1"
@@ -222,20 +268,31 @@ export default function OutlineCard(props) {
             >
               斜鞍座上的菠蘿更換數量： {props.record.CheOnJo}
             </Typography>
+          </CardContent>
+          <CardContent
+            sx={{
+              pointerEvents: "none",
+              padding: "0px",
+              background: "#164765",
+              border: "1px solid grey",
+              borderRadius: "1vw",
+              opacity: divExpand ? 1 : 0,
+            }}
+          >
             <Typography
               sx={{
                 fontSize: {
-                  xs: "3.5vw", // theme.breakpoints.up('xs')
-                  sm: "3vw", // theme.breakpoints.up('sm')
-                  md: "2.5vw", // theme.breakpoints.up('md')
-                  lg: "2vw", // theme.breakpoints.up('lg')
-                  xl: "1.5vw", // theme.breakpoints.up('xl')
+                  xs: "5.5vw", // theme.breakpoints.up('xs')
+                  sm: "5vw", // theme.breakpoints.up('sm')
+                  md: "3.5vw", // theme.breakpoints.up('md')
+                  lg: "3vw", // theme.breakpoints.up('lg')
+                  xl: "2.5vw", // theme.breakpoints.up('xl')
                 },
                 textAlign: "left",
               }}
               color="#5bc0be"
             >
-              以往紀錄
+              歷程
             </Typography>
             {props.timeSlotRecord.map((temp) => {
               return (
@@ -246,11 +303,11 @@ export default function OutlineCard(props) {
                   <Typography
                     sx={{
                       fontSize: {
-                        xs: "3vw", // theme.breakpoints.up('xs')
-                        sm: "2.5vw", // theme.breakpoints.up('sm')
+                        xs: "3.5vw", // theme.breakpoints.up('xs')
+                        sm: "3vw", // theme.breakpoints.up('sm')
                         md: "2vw", // theme.breakpoints.up('md')
-                        lg: "1.5vw", // theme.breakpoints.up('lg')
-                        xl: "1vw", // theme.breakpoints.up('xl')
+                        lg: "1.75vw", // theme.breakpoints.up('lg')
+                        xl: "2vw", // theme.breakpoints.up('xl')
                       },
                     }}
                     color="#5bc0be"
@@ -260,11 +317,11 @@ export default function OutlineCard(props) {
                   <Typography
                     sx={{
                       fontSize: {
-                        xs: "3vw", // theme.breakpoints.up('xs')
-                        sm: "2.5vw", // theme.breakpoints.up('sm')
+                        xs: "3.5vw", // theme.breakpoints.up('xs')
+                        sm: "3vw", // theme.breakpoints.up('sm')
                         md: "2vw", // theme.breakpoints.up('md')
-                        lg: "1.5vw", // theme.breakpoints.up('lg')
-                        xl: "1vw", // theme.breakpoints.up('xl')
+                        lg: "1.75vw", // theme.breakpoints.up('lg')
+                        xl: "2vw", // theme.breakpoints.up('xl')
                       },
                     }}
                     color="#5bc0be"
@@ -276,11 +333,11 @@ export default function OutlineCard(props) {
                       <Typography
                         sx={{
                           fontSize: {
-                            xs: "3vw", // theme.breakpoints.up('xs')
-                            sm: "2.5vw", // theme.breakpoints.up('sm')
+                            xs: "3.5vw", // theme.breakpoints.up('xs')
+                            sm: "3vw", // theme.breakpoints.up('sm')
                             md: "2vw", // theme.breakpoints.up('md')
-                            lg: "1.5vw", // theme.breakpoints.up('lg')
-                            xl: "1vw", // theme.breakpoints.up('xl')
+                            lg: "1.75vw", // theme.breakpoints.up('lg')
+                            xl: "2vw", // theme.breakpoints.up('xl')
                           },
                         }}
                         color="#5bc0be"
@@ -293,41 +350,16 @@ export default function OutlineCard(props) {
                       </Typography>
                     </Fragment>
                   )}
-                  {/*   {ready &&
-                    summary
-                      .filter((obj) => {
-                        return obj.Time_Slot === temp.Time_Slot;
-                      })[0]
-                      .Action.map((x) => {
-                        return (
-                          <Fragment key={x}>
-                            <Typography
-                              sx={{
-                                fontSize: {
-                                  xs: "3vw", // theme.breakpoints.up('xs')
-                                  sm: "2.5vw", // theme.breakpoints.up('sm')
-                                  md: "2vw", // theme.breakpoints.up('md')
-                                  lg: "1.5vw", // theme.breakpoints.up('lg')
-                                  xl: "1vw", // theme.breakpoints.up('xl')
-                                },
-                              }}
-                              color="#5bc0be"
-                            >
-                              {x}
-                            </Typography>
-                          </Fragment>
-                        );
-                      })} */}
                   {ready && (
                     <Fragment>
                       <Typography
                         sx={{
                           fontSize: {
-                            xs: "3vw", // theme.breakpoints.up('xs')
-                            sm: "2.5vw", // theme.breakpoints.up('sm')
+                            xs: "3.5vw", // theme.breakpoints.up('xs')
+                            sm: "3vw", // theme.breakpoints.up('sm')
                             md: "2vw", // theme.breakpoints.up('md')
-                            lg: "1.5vw", // theme.breakpoints.up('lg')
-                            xl: "1vw", // theme.breakpoints.up('xl')
+                            lg: "1.75vw", // theme.breakpoints.up('lg')
+                            xl: "2vw", // theme.breakpoints.up('xl')
                           },
                         }}
                         color="#5bc0be"
@@ -344,21 +376,36 @@ export default function OutlineCard(props) {
               );
             })}
           </CardContent>
-          <CardActions disableSpacing sx={{ justifyContent: "flex-end" }}>
+          <CardActions
+            disableSpacing
+            sx={{
+              justifyContent: "flex-end",
+              padding: "3px",
+              opacity: divExpand ? 1 : 0,
+            }}
+          >
             <IconButton
               title="Add"
               sx={{
                 color: "white",
                 padding: "0",
-                height: "fit-content",
-                width: "fit-content",
                 textAlign: "right",
               }}
               aria-label="open table"
               onClick={openCorrespondingTable}
               data-record={JSON.stringify(props.record)}
             >
-              <AddIcon />
+              <AddIcon
+                sx={{
+                  fontSize: {
+                    xs: "8vw", // theme.breakpoints.up('xs')
+                    sm: "6vw", // theme.breakpoints.up('sm')
+                    md: "5vw", // theme.breakpoints.up('md')
+                    lg: "4vw", // theme.breakpoints.up('lg')
+                    xl: "3vw", // theme.breakpoints.up('xl')
+                  },
+                }}
+              />
             </IconButton>
           </CardActions>
         </Card>
@@ -366,11 +413,11 @@ export default function OutlineCard(props) {
           <Typography
             sx={{
               fontSize: {
-                xs: "3vw", // theme.breakpoints.up('xs')
-                sm: "2.5vw", // theme.breakpoints.up('sm')
-                md: "2vw", // theme.breakpoints.up('md')
-                lg: "1.5vw", // theme.breakpoints.up('lg')
-                xl: "1vw", // theme.breakpoints.up('xl')
+                xs: "5.5vw", // theme.breakpoints.up('xs')
+                sm: "5vw", // theme.breakpoints.up('sm')
+                md: "3.5vw", // theme.breakpoints.up('md')
+                lg: "3vw", // theme.breakpoints.up('lg')
+                xl: "2vw", // theme.breakpoints.up('xl')
               },
             }}
             variant="body1"

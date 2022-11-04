@@ -6,7 +6,6 @@ import CheckIcon from "@mui/icons-material/Check";
 import ToggleButton from "@mui/material/ToggleButton";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { PropaneSharp } from "@mui/icons-material";
 
 export default function DetailsTable(props) {
   const [data, setData] = useState([
@@ -1072,7 +1071,7 @@ export default function DetailsTable(props) {
   const [dataFromSQL, setDataFromSQL] = useState([]);
   const [dataToFetch, setDataToFetch] = useState({});
   const [usedDataFromSQL, setUsedDataFromSQL] = useState(false);
-
+  const [selected, setSelected] = useState(null);
   const ref = useRef(null);
 
   useEffect(() => {
@@ -1189,6 +1188,7 @@ export default function DetailsTable(props) {
       console.log(newState);
       return newState;
     });
+    setSelected(row.index);
   }
 
   function updateMyData(rowIndex, columnId, value) {
@@ -1215,6 +1215,7 @@ export default function DetailsTable(props) {
         return row;
       })
     );
+    setSelected(rowIndex);
   }
 
   function fetchSQL(rowIndex, columnId, value) {
@@ -1269,6 +1270,9 @@ export default function DetailsTable(props) {
 
     // We'll only update the external data when the input is blurred
     const onBlur = () => {
+      console.log(index);
+      console.log(id);
+      console.log(value);
       updateMyData(index, id, value);
       /*       fetchSQL(index, id, value);
        */
@@ -1778,12 +1782,15 @@ export default function DetailsTable(props) {
             <tbody {...getTableBodyProps()}>
               {rows.map((row) => {
                 prepareRow(row);
+                console.log(row);
                 return (
                   <tr
                     {...row.getRowProps([
                       {
                         style: {
                           borderBottom: "solid 2px lightgreen",
+                          backgroundColor:
+                            row.index === selected ? "#beed92" : "#ffffff",
                         },
                       },
                     ])}

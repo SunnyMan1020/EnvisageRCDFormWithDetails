@@ -1,4 +1,4 @@
-.header {
+.subHeader {
   text-align: left;
   color: white;
   display: flex;
@@ -10,6 +10,54 @@
   position: relative;
 }
 
-.header p {
-  font-size: 3vw;
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 320px) and (orientation: portrait) {
+  .header p {
+    font-size: 7vw;
+    margin: 0;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 320px) and (orientation: landscape) {
+  .header p {
+    font-size: 7vw;
+    margin: 0;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  .header p {
+    font-size: 5vw;
+    margin: 0;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  .header p {
+    font-size: 3vw;
+    margin: 0;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  .header p {
+    font-size: 3vw;
+    margin: 0;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  .header p {
+    font-size: 3vw;
+    margin: 0;
+  }
 }

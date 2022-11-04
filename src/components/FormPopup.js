@@ -102,6 +102,7 @@ export default function FormPopup(props) {
 
   const closePopup = () => {
     props.setChecked(false);
+    reset();
   };
 
   useEffect(() => {
@@ -145,14 +146,29 @@ export default function FormPopup(props) {
         })
         .then(function (responseJson) {
           console.log(responseJson);
-          setReadyToSubmit(false);
           props.setChecked(false);
           props.setAddedNew(true);
+          reset();
         });
     } else {
       return;
     }
   }, [record, readyToSubmit]);
+
+  function reset() {
+    setRecord({
+      name: "",
+      project: "",
+      plantNumber: "",
+      pileNumber: "",
+      drillNumber: "",
+      pingOnJo: "",
+      cheOnJo: "",
+      date: props.dateUsing,
+    });
+    setReadyToSubmit(false);
+    setDisplaySubmit(false);
+  }
 
   return (
     <div className="formPopup">
@@ -167,11 +183,11 @@ export default function FormPopup(props) {
             boxShadow: `0 0 0.2rem 0px #db9c15, 0 0 0.2rem #db9c15, inset 0 0 1rem #db9c15`,
             borderRadius: "3vw",
             width: {
-              xs: "72vw", // theme.breakpoints.up('xs')
-              sm: "62vw", // theme.breakpoints.up('sm')
-              md: "52vw", // theme.breakpoints.up('md')
-              lg: "42vw", // theme.breakpoints.up('lg')
-              xl: "32vw", // theme.breakpoints.up('xl')
+              xs: "92vw", // theme.breakpoints.up('xs')
+              sm: "82vw", // theme.breakpoints.up('sm')
+              md: "72vw", // theme.breakpoints.up('md')
+              lg: "62vw", // theme.breakpoints.up('lg')
+              xl: "52vw", // theme.breakpoints.up('xl')
             },
             display: "flex",
             flexDirection: "column",
@@ -199,11 +215,11 @@ export default function FormPopup(props) {
                       justifyContent: "space-between",
                       alignItems: "center",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
-                        xl: "1.5vw", // theme.breakpoints.up('xl')
+                        xs: "5.5vw", // theme.breakpoints.up('xs')
+                        sm: "5vw", // theme.breakpoints.up('sm')
+                        md: "4.5vw", // theme.breakpoints.up('md')
+                        lg: "4vw", // theme.breakpoints.up('lg')
+                        xl: "2vw", // theme.breakpoints.up('xl')
                       },
                     }}
                   >
@@ -216,7 +232,7 @@ export default function FormPopup(props) {
                           sm: "3.5vw", // theme.breakpoints.up('sm')
                           md: "3vw", // theme.breakpoints.up('md')
                           lg: "2.5vw", // theme.breakpoints.up('lg')
-                          xl: "2vw", // theme.breakpoints.up('xl')
+                          xl: "1.5vw", // theme.breakpoints.up('xl')
                         },
                       }}
                     >
@@ -228,10 +244,10 @@ export default function FormPopup(props) {
                     sx={{
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                       display: "flex",
@@ -250,7 +266,7 @@ export default function FormPopup(props) {
                       name="plantNumber"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
@@ -276,10 +292,10 @@ export default function FormPopup(props) {
                     sx={{
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                       display: "flex",
@@ -298,7 +314,7 @@ export default function FormPopup(props) {
                       name="project"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
@@ -329,10 +345,10 @@ export default function FormPopup(props) {
                       paddingRight: "3vw",
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                     }}
@@ -346,7 +362,7 @@ export default function FormPopup(props) {
                       name="name"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
@@ -378,10 +394,10 @@ export default function FormPopup(props) {
                       paddingRight: "3vw",
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                     }}
@@ -394,7 +410,7 @@ export default function FormPopup(props) {
                       name="pileNumber"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
@@ -414,10 +430,10 @@ export default function FormPopup(props) {
                       paddingRight: "3vw",
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                     }}
@@ -427,10 +443,10 @@ export default function FormPopup(props) {
                       sx={{
                         display: "flex",
                         fontSize: {
-                          xs: "3.5vw", // theme.breakpoints.up('xs')
-                          sm: "3vw", // theme.breakpoints.up('sm')
-                          md: "2.5vw", // theme.breakpoints.up('md')
-                          lg: "2vw", // theme.breakpoints.up('lg')
+                          xs: "4.5vw", // theme.breakpoints.up('xs')
+                          sm: "4vw", // theme.breakpoints.up('sm')
+                          md: "3.5vw", // theme.breakpoints.up('md')
+                          lg: "3vw", // theme.breakpoints.up('lg')
                           xl: "1.5vw", // theme.breakpoints.up('xl')
                         },
                         flexDirection: "column",
@@ -442,10 +458,10 @@ export default function FormPopup(props) {
                         sx={{
                           textAlign: "left",
                           fontSize: {
-                            xs: "3vw", // theme.breakpoints.up('xs')
-                            sm: "2.5vw", // theme.breakpoints.up('sm')
-                            md: "2vw", // theme.breakpoints.up('md')
-                            lg: "1.5vw", // theme.breakpoints.up('lg')
+                            xs: "3.5vw", // theme.breakpoints.up('xs')
+                            sm: "3vw", // theme.breakpoints.up('sm')
+                            md: "2.5vw", // theme.breakpoints.up('md')
+                            lg: "2vw", // theme.breakpoints.up('lg')
                             xl: "1vw", // theme.breakpoints.up('xl')
                           },
                         }}
@@ -461,7 +477,7 @@ export default function FormPopup(props) {
                       name="drillNumber"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
@@ -481,10 +497,10 @@ export default function FormPopup(props) {
                       paddingRight: "3vw",
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
                       },
                     }}
@@ -497,11 +513,14 @@ export default function FormPopup(props) {
                       name="pingOnJo"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
                           xl: "8vw", // theme.breakpoints.up('xl')
+                        },
+                        "& input": {
+                          textAlign: "center",
                         },
                       }}
                       type="number"
@@ -518,11 +537,14 @@ export default function FormPopup(props) {
                       paddingRight: "3vw",
                       textAlign: "left",
                       fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2.5vw", // theme.breakpoints.up('md')
-                        lg: "2vw", // theme.breakpoints.up('lg')
+                        xs: "4.5vw", // theme.breakpoints.up('xs')
+                        sm: "4vw", // theme.breakpoints.up('sm')
+                        md: "3.5vw", // theme.breakpoints.up('md')
+                        lg: "3vw", // theme.breakpoints.up('lg')
                         xl: "1.5vw", // theme.breakpoints.up('xl')
+                      },
+                      "& input": {
+                        textAlign: "center",
                       },
                     }}
                   >
@@ -534,12 +556,13 @@ export default function FormPopup(props) {
                       name="cheOnJo"
                       sx={{
                         width: {
-                          xs: "28vw", // theme.breakpoints.up('xs')
+                          xs: "35vw", // theme.breakpoints.up('xs')
                           sm: "18vw", // theme.breakpoints.up('sm')
                           md: "13vw", // theme.breakpoints.up('md')
                           lg: "9vw", // theme.breakpoints.up('lg')
                           xl: "8vw", // theme.breakpoints.up('xl')
                         },
+                        textAlign: "center",
                       }}
                       type="number"
                       inputProps={{ title: "cheOnJo" }}
@@ -547,22 +570,26 @@ export default function FormPopup(props) {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ justifyContent: "center" }}>
-                  <Fade in={displaySubmit} timeout={500}>
-                    <Button
-                      sx={{
-                        fontSize: {
-                          xs: "4vw", // theme.breakpoints.up('xs')
-                          sm: "3.5vw", // theme.breakpoints.up('sm')
-                          md: "3vw", // theme.breakpoints.up('md')
-                          lg: "2.5vw", // theme.breakpoints.up('lg')
-                          xl: "2vw", // theme.breakpoints.up('xl')
-                        },
-                      }}
-                      onClick={getSubmitTime}
-                    >
-                      提交
-                    </Button>
-                  </Fade>
+                  {/*  <Fade in={displaySubmit} timeout={500}> */}
+                  <Button
+                    sx={{
+                      fontSize: {
+                        xs: "6vw", // theme.breakpoints.up('xs')
+                        sm: "5.5vw", // theme.breakpoints.up('sm')
+                        md: "5vw", // theme.breakpoints.up('md')
+                        lg: "4.5vw", // theme.breakpoints.up('lg')
+                        xl: "2.5vw", // theme.breakpoints.up('xl')
+                      },
+                      "&.Mui-disabled": {
+                        color: "red",
+                      },
+                    }}
+                    onClick={getSubmitTime}
+                    disabled={!displaySubmit}
+                  >
+                    {displaySubmit ? "提交" : "請填寫所有欄位"}
+                  </Button>
+                  {/*    </Fade> */}
                 </CardActions>
               </Fragment>
             )}

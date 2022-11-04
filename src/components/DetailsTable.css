@@ -175,68 +175,23 @@ td.interval {
   border-right: none;
 }
 
-/* td.vertical.nonInterval {
-  width: fit-content;
-} */
+tr {
+  background-color: white;
+}
 
 td.nonInterval {
   white-space: normal;
-  background: white /*  !important */;
-  /* width: fit-content; */
   height: 2vh;
 }
 
 td.nonInterval.Time_Slot {
   white-space: nowrap;
-  background: white /*  !important */;
-  /* width: fit-content; */
   height: 2vh;
+  background-color: white;
 }
 
 td.nonInterval input[type="number"] {
   width: 5vw;
-}
-
-.columnGroup {
-  background: rgb(136 200 207 / 42%) !important;
-}
-
-.avgColumnGroup {
-  background: rgb(124 180 230 / 42%) !important;
-}
-
-.operatorColumnGroup {
-  background: rgb(136 153 207 / 42%) !important;
-}
-
-.holiday {
-  color: red;
-}
-
-/* td.nonInterval.nonIntervalFirst {
-  position: sticky;
-  left: 0;
-}
-
-td.nonInterval.nonIntervalSecond {
-  position: sticky;
-  left: 5vw;
-}
-
-td.nonInterval.nonIntervalThird {
-  position: sticky;
-  left: 10vw;
-} */
-
-.MutatingDots {
-  width: 100vw;
-  height: 97vh;
-  align-items: center;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: 1;
 }
 
 @media only screen and (min-width: 320px) and (orientation: portrait) {
