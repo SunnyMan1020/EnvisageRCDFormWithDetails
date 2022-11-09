@@ -17,9 +17,8 @@
 
 .logout {
   position: absolute;
-  top: 0;
-  right: 0;
-  display: none;
+  left: 3vw;
+  top: 1vh;
 }
 
 @media only screen and (min-width: 320px) and (orientation: portrait) {

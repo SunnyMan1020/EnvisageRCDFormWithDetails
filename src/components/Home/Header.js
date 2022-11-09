@@ -39,10 +39,10 @@ export default function Header(props) {
             sx={{
               fontSize: {
                 xs: "6vw", // theme.breakpoints.up('xs')
-                sm: "5.5vw", // theme.breakpoints.up('sm')
-                md: "5vw", // theme.breakpoints.up('md')
-                lg: "4.5vw", // theme.breakpoints.up('lg')
-                xl: "4vw", // theme.breakpoints.up('xl')
+                sm: "5vw", // theme.breakpoints.up('sm')
+                md: "4vw", // theme.breakpoints.up('md')
+                lg: "3.5vw", // theme.breakpoints.up('lg')
+                xl: "3vw", // theme.breakpoints.up('xl')
               },
             }}
           ></AddCircleOutlinedIcon>
@@ -61,11 +61,12 @@ export default function Header(props) {
             sx={{
               fontSize: {
                 xs: "6vw", // theme.breakpoints.up('xs')
-                sm: "5.5vw", // theme.breakpoints.up('sm')
-                md: "5vw", // theme.breakpoints.up('md')
-                lg: "4.5vw", // theme.breakpoints.up('lg')
-                xl: "4vw", // theme.breakpoints.up('xl')
+                sm: "5vw", // theme.breakpoints.up('sm')
+                md: "4vw", // theme.breakpoints.up('md')
+                lg: "3.5vw", // theme.breakpoints.up('lg')
+                xl: "3vw", // theme.breakpoints.up('xl')
               },
+              color: "red",
             }}
           ></LogoutIcon>
         </IconButton>
