@@ -91,7 +91,9 @@ export default function FormPopup({
       Time: new Date(
         dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
       ).toISOString(), // But override this one
-      name: user["https://envisage-dt/claims/Operator"],
+      name: Object.keys(user).includes("https://envisage-dt/claims/Operator")
+        ? user["https://envisage-dt/claims/Operator"]
+        : "dummy",
     }));
     setReadyToSubmit(true);
   };
@@ -103,7 +105,6 @@ export default function FormPopup({
 
   const reset = useCallback(() => {
     setRecord({
-      name: "",
       project: "",
       plantNumber: "",
       pileNumber: "",
