@@ -15,6 +15,7 @@ function Home() {
   const [dateUsing, setDateUsing] = useState(new Date());
   const prevDateUsingRef = useRef();
   const [dataForCards, setDataForCards] = useState([]);
+  const [dataForCardsReady, setDataForCardsReady] = useState(false);
   const [formDetailsDataForCards, setFormDetailsDataForCards] = useState([]);
   const [checked, setChecked] = useState(false);
   const [addedNew, setAddedNew] = useState(false);
@@ -31,6 +32,7 @@ function Home() {
   useEffect(() => {
     console.log(DateTime.fromJSDate(dateUsing).toFormat("yyyy-LL-dd"));
     async function getData() {
+      setDataForCardsReady(false);
       const accessToken = await getAccessTokenSilently({
         audience: "https://envisagepj005.azurewebsites.net",
       });
@@ -83,7 +85,6 @@ function Home() {
       const data = await response.json();
       setFormDetailsDataForCards(data);
       setAddedNew(false);
-      console.log("data", data);
     }
 
     if (isAuthenticated) {
@@ -105,7 +106,10 @@ function Home() {
   }, [addedNew, dateUsing, isAuthenticated, user, getAccessTokenSilently]);
 
   useEffect(() => {
-    if (dataForCards.length !== 0) console.log(dataForCards);
+    /*    if (dataForCards.length !== 0) { */
+    setDataForCardsReady(true);
+    console.log(dataForCards);
+    /*  } */
   }, [dataForCards]);
 
   if (isLoading) {
@@ -116,31 +120,49 @@ function Home() {
     );
   } else {
     if (isAuthenticated) {
-      return (
-        <div className="Home">
-          <Header
-            dateUsing={dateUsing}
-            setDateUsing={setDateUsing}
-            prevDateUsingRef={prevDateUsingRef}
-            checked={checked}
-            setChecked={setChecked}
-            headerRef={headerRef}
-          />
-          <FormPopup
-            checked={checked}
-            setChecked={setChecked}
-            dateUsing={dateUsing}
-            addedNew={addedNew}
-            setAddedNew={setAddedNew}
-          />
-          <Cards
-            dataForCards={dataForCards}
-            formDetailsDataForCards={formDetailsDataForCards}
-            setAddedNew={setAddedNew}
-            headerRef={headerRef}
-          />
-        </div>
-      );
+      if (!dataForCardsReady) {
+        return (
+          <div className="Home">
+            <Header
+              dateUsing={dateUsing}
+              setDateUsing={setDateUsing}
+              prevDateUsingRef={prevDateUsingRef}
+              checked={checked}
+              setChecked={setChecked}
+              headerRef={headerRef}
+            />
+            <div className="dataLoader">
+              <Triangle color="white" />
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="Home">
+            <Header
+              dateUsing={dateUsing}
+              setDateUsing={setDateUsing}
+              prevDateUsingRef={prevDateUsingRef}
+              checked={checked}
+              setChecked={setChecked}
+              headerRef={headerRef}
+            />
+            <FormPopup
+              checked={checked}
+              setChecked={setChecked}
+              dateUsing={dateUsing}
+              addedNew={addedNew}
+              setAddedNew={setAddedNew}
+            />
+            <Cards
+              dataForCards={dataForCards}
+              formDetailsDataForCards={formDetailsDataForCards}
+              setAddedNew={setAddedNew}
+              headerRef={headerRef}
+            />
+          </div>
+        );
+      }
     } else {
       return <Navigate to="/" />;
     }

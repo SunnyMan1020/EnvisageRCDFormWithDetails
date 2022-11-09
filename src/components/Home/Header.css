@@ -15,6 +15,13 @@
   flex-direction: column;
 }
 
+.logout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
 @media only screen and (min-width: 320px) and (orientation: portrait) {
   .header p {
     font-size: 7vw;
