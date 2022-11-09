@@ -54,11 +54,6 @@ export default function Header(props) {
           sx={{
             color: "white",
             padding: "0",
-            position: "absolute",
-            top: "0",
-            right: "0",
-            //   height: "fit-content",
-            //    width: "fit-content",
           }}
           onClick={logoutWithRedirect}
         >
