@@ -1753,7 +1753,7 @@ export default function DetailsTable(props) {
     usedDataFromSQL && (
       <div className="tableDiv">
         <div className="closeTable">
-          <IconButton onClick={closeTable}>
+          <IconButton onClick={closeTable} sx={{ padding: "0px" }}>
             <CloseIcon></CloseIcon>
           </IconButton>
         </div>
@@ -1782,7 +1782,7 @@ export default function DetailsTable(props) {
             <tbody {...getTableBodyProps()}>
               {rows.map((row) => {
                 prepareRow(row);
-                console.log(row);
+                /*    console.log(row); */
                 return (
                   <tr
                     {...row.getRowProps([

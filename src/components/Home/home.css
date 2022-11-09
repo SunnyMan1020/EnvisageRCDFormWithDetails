@@ -1,0 +1,18 @@
+.Home {
+  background: radial-gradient(circle, #030032 0, #35bcb6 160%);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+  overflow: auto;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+}
+
+.homeLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}

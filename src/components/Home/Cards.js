@@ -14,6 +14,7 @@ function Cards(props) {
                 return temp.Time === record.Time;
               })}
               setAddedNew={props.setAddedNew}
+              headerRef={props.headerRef}
             />
           );
         })}
