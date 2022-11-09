@@ -9,13 +9,8 @@ import { Triangle } from "react-loader-spinner";
 import { Navigate } from "react-router-dom";
 
 function Home() {
-  const {
-    isAuthenticated,
-    isLoading,
-    user,
-    getAccessTokenSilently,
-    getTokenWithPopup,
-  } = useAuth0();
+  const { isAuthenticated, isLoading, user, getAccessTokenSilently } =
+    useAuth0();
 
   const [dateUsing, setDateUsing] = useState(new Date());
   const prevDateUsingRef = useRef();
@@ -68,6 +63,9 @@ function Home() {
     }
 
     async function getFormDetailsData() {
+      const accessToken = await getAccessTokenSilently({
+        audience: "https://envisagepj005.azurewebsites.net",
+      });
       var getDataUrl =
         "https://envisagepj005.azurewebsites.net/getAllFormRecordDetails";
       var bodyData = {
@@ -77,6 +75,7 @@ function Home() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
         },
         body: JSON.stringify(bodyData),
       };
@@ -103,7 +102,7 @@ function Home() {
         getFormDetailsData();
       }
     }
-  }, [addedNew, dateUsing, isAuthenticated, user]);
+  }, [addedNew, dateUsing, isAuthenticated, user, getAccessTokenSilently]);
 
   useEffect(() => {
     if (dataForCards.length !== 0) console.log(dataForCards);
