@@ -6,8 +6,17 @@ import CheckIcon from "@mui/icons-material/Check";
 import ToggleButton from "@mui/material/ToggleButton";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useCallback } from "react";
 
-export default function DetailsTable(props) {
+export default function DetailsTable({
+  record,
+  setToggleTable,
+  setAddedNew,
+  setReady,
+  setSummary,
+}) {
+  const { getAccessTokenSilently } = useAuth0();
   const [data, setData] = useState([
     {
       original: true,
@@ -1076,6 +1085,9 @@ export default function DetailsTable(props) {
 
   useEffect(() => {
     async function getTimeSlotData() {
+      const accessToken = await getAccessTokenSilently({
+        audience: "https://envisagepj005.azurewebsites.net",
+      });
       var getDataUrl =
         "https://envisagepj005.azurewebsites.net/getFormRecordDetails";
 
@@ -1083,8 +1095,9 @@ export default function DetailsTable(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
         },
-        body: JSON.stringify(props.record),
+        body: JSON.stringify(record),
       };
       const response = await fetch(getDataUrl, options);
       const responseData = await response.json();
@@ -1096,7 +1109,7 @@ export default function DetailsTable(props) {
       setDataFromSQL(JSON.parse(JSON.stringify(responseData, replacer)));
     }
     getTimeSlotData();
-  }, [props.record]);
+  }, [record, getAccessTokenSilently]);
 
   useEffect(() => {
     if (dataFromSQL.length > 0) {
@@ -1109,7 +1122,7 @@ export default function DetailsTable(props) {
     } else {
       setUsedDataFromSQL(true);
     }
-  }, [dataFromSQL]);
+  }, [dataFromSQL, data]);
 
   useEffect(() => {
     if (data.length > 0 && usedDataFromSQL) {
@@ -1120,20 +1133,27 @@ export default function DetailsTable(props) {
   }, [data, usedDataFromSQL]);
 
   useEffect(() => {
-    if (Object.keys(dataToFetch).length) {
-      console.log("dataToFetch", dataToFetch);
+    async function mergeData() {
+      const accessToken = await getAccessTokenSilently({
+        audience: "https://envisagepj005.azurewebsites.net",
+      });
       var mergeDataUrl =
         "https://envisagepj005.azurewebsites.net/mergeFormDetails";
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
         },
         body: JSON.stringify(dataToFetch),
       };
       fetch(mergeDataUrl, options);
     }
-  }, [dataToFetch]);
+    if (Object.keys(dataToFetch).length) {
+      console.log("dataToFetch", dataToFetch);
+      mergeData();
+    }
+  }, [dataToFetch, getAccessTokenSilently]);
 
   function replacer(i, val) {
     if (i === "Depth" || i === "Ref_Level") {
@@ -1152,13 +1172,47 @@ export default function DetailsTable(props) {
   }
 
   function closeTable() {
-    props.setToggleTable(false);
-    props.setAddedNew(true);
-    /*  props.setReady(false); */
-    props.setSummary([]);
+    setToggleTable(false);
+    setAddedNew(true);
+    /*  setReady(false); */
+    setSummary([]);
   }
+  const toggleSelect = useCallback(
+    (value, column, row) => {
+      console.log(value);
+      console.log(column);
+      console.log(row);
 
-  function toggleSelect(value, column, row) {
+      setData((prevState) => {
+        const newState = prevState.map((obj) => {
+          if (obj.Time_Slot === row.original.Time_Slot) {
+            console.log(obj);
+            var dt = new Date();
+            var keyToChange = column.Header;
+            var fetchBody = structuredClone(obj);
+            fetchBody[keyToChange] = !fetchBody[keyToChange];
+            fetchBody["RecordId"] = record.RecordId;
+            fetchBody["Date"] = record.Date;
+            fetchBody["Time_Slot_SubmitTime"] = new Date(
+              dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
+            ).toISOString();
+            fetchBody["Depth"] =
+              fetchBody["Depth"] === "" ? null : fetchBody["Depth"];
+            fetchBody["Ref_Level"] =
+              fetchBody["Ref_Level"] === "" ? null : fetchBody["Ref_Level"];
+            setDataToFetch(fetchBody);
+            return { ...obj, [keyToChange]: !obj[keyToChange] };
+          }
+          return obj;
+        });
+        console.log(newState);
+        return newState;
+      });
+      setSelected(row.index);
+    },
+    [record]
+  );
+  /* function toggleSelect(value, column, row) {
     console.log(value);
     console.log(column);
     console.log(row);
@@ -1171,8 +1225,8 @@ export default function DetailsTable(props) {
           var keyToChange = column.Header;
           var fetchBody = structuredClone(obj);
           fetchBody[keyToChange] = !fetchBody[keyToChange];
-          fetchBody["RecordId"] = props.record.RecordId;
-          fetchBody["Date"] = props.record.Date;
+          fetchBody["RecordId"] = record.RecordId;
+          fetchBody["Date"] = record.Date;
           fetchBody["Time_Slot_SubmitTime"] = new Date(
             dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
           ).toISOString();
@@ -1189,7 +1243,7 @@ export default function DetailsTable(props) {
       return newState;
     });
     setSelected(row.index);
-  }
+  } */
 
   function updateMyData(rowIndex, columnId, value) {
     setData((prevState) =>
@@ -1198,8 +1252,8 @@ export default function DetailsTable(props) {
           var temp = structuredClone(row);
           var dt = new Date();
           temp[columnId] = value;
-          temp["RecordId"] = props.record.RecordId;
-          temp["Date"] = props.record.Date;
+          temp["RecordId"] = record.RecordId;
+          temp["Date"] = record.Date;
           temp["Time_Slot_SubmitTime"] = new Date(
             dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
           ).toISOString();
@@ -1218,7 +1272,7 @@ export default function DetailsTable(props) {
     setSelected(rowIndex);
   }
 
-  function fetchSQL(rowIndex, columnId, value) {
+  async function fetchSQL(rowIndex, columnId, value) {
     console.log(data);
     console.log(usedDataFromSQL);
     if (data.length > 0) {
@@ -1232,8 +1286,8 @@ export default function DetailsTable(props) {
       });
       console.log("desire", desire);
       desire[columnId] = value;
-      desire["RecordId"] = props.record.RecordId;
-      desire["Date"] = props.record.Date;
+      desire["RecordId"] = record.RecordId;
+      desire["Date"] = record.Date;
       desire["Time_Slot_SubmitTime"] = new Date(
         dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
       ).toISOString();
@@ -1241,13 +1295,16 @@ export default function DetailsTable(props) {
       desire["Ref_Level"] =
         desire["Ref_Level"] === "" ? null : desire["Ref_Level"];
       console.log(desire);
-
+      const accessToken = await getAccessTokenSilently({
+        audience: "https://envisagepj005.azurewebsites.net",
+      });
       var mergeDataUrl =
         "https://envisagepj005.azurewebsites.net/mergeFormDetails";
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + accessToken,
         },
         body: JSON.stringify(desire),
       };
@@ -1735,7 +1792,7 @@ export default function DetailsTable(props) {
         ],
       },
     ],
-    []
+    [toggleSelect]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

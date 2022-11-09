@@ -9,7 +9,12 @@ import Typography from "@mui/material/Typography";
 import DetailsTable from "./DetailsTable";
 import "./OutlineCard.css";
 
-export default function OutlineCard(props) {
+export default function OutlineCard({
+  timeSlotRecord,
+  record,
+  setAddedNew,
+  headerRef,
+}) {
   function openCorrespondingTable(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -18,8 +23,8 @@ export default function OutlineCard(props) {
       JSON.parse(decodeURIComponent(event.currentTarget.dataset.record))
     );
     setToggleTable(true);
-    if (props.headerRef.current) {
-      props.headerRef.current.scrollIntoView({
+    if (headerRef.current) {
+      headerRef.current.scrollIntoView({
         behavior: "smooth",
       });
     }
@@ -76,7 +81,7 @@ export default function OutlineCard(props) {
   }, [divExpand]);
 
   useEffect(() => {
-    const rockObjtemp = props.timeSlotRecord.map(
+    const rockObjtemp = timeSlotRecord.map(
       ({ 一級石, 二級石, 三級石, 四級石, 黃花沙, 石屎 }) => {
         return {
           一級石,
@@ -89,7 +94,7 @@ export default function OutlineCard(props) {
       }
     );
     console.log(rockObjtemp);
-    const actionObjtemp = props.timeSlotRecord.map(
+    const actionObjtemp = timeSlotRecord.map(
       ({ 執窿, 待機, 換水, 換轉杆, 放大, 檢查, 直鑽, 維修, 追通 }) => {
         return {
           執窿,
@@ -115,7 +120,7 @@ export default function OutlineCard(props) {
 
     var tempSummary = [];
 
-    props.timeSlotRecord.forEach((rec, index) => {
+    timeSlotRecord.forEach((rec, index) => {
       tempSummary.push({
         Time_Slot: rec.Time_Slot,
         Grade: filterItems(rockObjtemp[index]),
@@ -125,18 +130,18 @@ export default function OutlineCard(props) {
 
     console.log(tempSummary);
     setSummary(tempSummary);
-  }, [props.timeSlotRecord]);
+  }, [timeSlotRecord]);
 
   useEffect(() => {
     console.log(summary);
-    if (summary.length === props.timeSlotRecord.length && summary.length > 0) {
+    if (summary.length === timeSlotRecord.length && summary.length > 0) {
       console.log("summary.length", summary.length);
-      console.log("props.timeSlotRecord.length", props.timeSlotRecord.length);
+      console.log("timeSlotRecord.length", timeSlotRecord.length);
       setReady(true);
     } else {
       setReady(false);
     }
-  }, [summary]);
+  }, [summary, timeSlotRecord.length]);
 
   useEffect(() => {
     console.log(ready);
@@ -201,7 +206,7 @@ export default function OutlineCard(props) {
                     },
                   }}
                 >
-                  {props.record.Plant_Id}
+                  {record.Plant_Id}
                 </Typography>
                 <Typography
                   className="pile"
@@ -215,7 +220,7 @@ export default function OutlineCard(props) {
                     },
                   }}
                 >
-                  {props.record.Pile_Id}
+                  {record.Pile_Id}
                 </Typography>
               </div>
             }
@@ -232,7 +237,7 @@ export default function OutlineCard(props) {
                   },
                 }}
               >
-                {props.record.Name}
+                {record.Name}
               </Typography>
             }
           />
@@ -261,7 +266,7 @@ export default function OutlineCard(props) {
               variant="body1"
               color="#5bc0be"
             >
-              鑽頭號碼： {props.record.Drill_Id}
+              鑽頭號碼： {record.Drill_Id}
             </Typography>
             <Typography
               sx={{
@@ -276,7 +281,7 @@ export default function OutlineCard(props) {
               variant="body1"
               color="#5bc0be"
             >
-              平鞍座上的菠蘿更換數量： {props.record.PingOnJo}
+              平鞍座上的菠蘿更換數量： {record.PingOnJo}
             </Typography>
             <Typography
               sx={{
@@ -291,7 +296,7 @@ export default function OutlineCard(props) {
               variant="body1"
               color="#5bc0be"
             >
-              斜鞍座上的菠蘿更換數量： {props.record.CheOnJo}
+              斜鞍座上的菠蘿更換數量： {record.CheOnJo}
             </Typography>
           </CardContent>
           <CardContent
@@ -319,7 +324,7 @@ export default function OutlineCard(props) {
             >
               歷程
             </Typography>
-            {props.timeSlotRecord.map((temp) => {
+            {timeSlotRecord.map((temp) => {
               return (
                 <div
                   className="DetailsPreview"
@@ -418,7 +423,7 @@ export default function OutlineCard(props) {
               }}
               aria-label="open table"
               onClick={openCorrespondingTable}
-              data-record={JSON.stringify(props.record)}
+              data-record={JSON.stringify(record)}
             >
               <AddIcon
                 sx={{
@@ -447,15 +452,15 @@ export default function OutlineCard(props) {
             }}
             variant="body1"
           >
-            {props.record.Project_Id}
+            {record.Project_Id}
           </Typography>
         </div>
       </div>
       {toggleTable && (
         <DetailsTable
-          record={props.record}
+          record={record}
           setToggleTable={setToggleTable}
-          setAddedNew={props.setAddedNew}
+          setAddedNew={setAddedNew}
           setReady={setReady}
           setSummary={setSummary}
         />

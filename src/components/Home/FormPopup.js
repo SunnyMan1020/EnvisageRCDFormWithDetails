@@ -10,9 +10,16 @@ import Select from "@mui/material/Select";
 import CloseIcon from "@mui/icons-material/Close";
 import { DateTime } from "luxon";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useCallback } from "react";
 
-export default function FormPopup(props) {
-  const { isAuthenticated, isLoading, user } = useAuth0();
+export default function FormPopup({
+  dateUsing,
+  checked,
+  setChecked,
+  addedNew,
+  setAddedNew,
+}) {
+  const { getAccessTokenSilently, user } = useAuth0();
   const [projectNameList, setProjectNameList] = useState([]);
   const [plantList, setPlantList] = useState([]);
   const [recordsOptions, setRecordsOptions] = useState({
@@ -26,7 +33,7 @@ export default function FormPopup(props) {
     drillNumber: "",
     pingOnJo: "",
     cheOnJo: "",
-    date: props.dateUsing,
+    date: dateUsing,
   });
   const [displaySubmit, setDisplaySubmit] = useState(false);
   const [readyToSubmit, setReadyToSubmit] = useState(false);
@@ -90,16 +97,31 @@ export default function FormPopup(props) {
   };
 
   const closePopup = () => {
-    props.setChecked(false);
+    setChecked(false);
     reset();
   };
+
+  const reset = useCallback(() => {
+    setRecord({
+      name: "",
+      project: "",
+      plantNumber: "",
+      pileNumber: "",
+      drillNumber: "",
+      pingOnJo: "",
+      cheOnJo: "",
+      date: dateUsing,
+    });
+    setReadyToSubmit(false);
+    setDisplaySubmit(false);
+  }, [dateUsing]);
 
   useEffect(() => {
     setRecord((prevState) => ({
       ...prevState, // Copy the old fields
-      date: DateTime.fromJSDate(props.dateUsing).toFormat("yyyy-MM-dd"), // But override this one
+      date: DateTime.fromJSDate(dateUsing).toFormat("yyyy-MM-dd"), // But override this one
     }));
-  }, [props.dateUsing]);
+  }, [dateUsing]);
 
   useEffect(() => {
     console.log(recordsOptions);
@@ -118,33 +140,47 @@ export default function FormPopup(props) {
       Object.values(record).every((currentValue) => currentValue !== "") &&
       readyToSubmit
     ) {
-      var insertFormUrl =
-        "https://envisagepj005.azurewebsites.net/insertFormTemp";
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(record),
-      };
-      console.log(JSON.stringify(record));
-
-      fetch(insertFormUrl, options)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (responseJson) {
-          console.log(responseJson);
-          props.setChecked(false);
-          props.setAddedNew(true);
-          reset();
+      async function insertFormDetailsData() {
+        const accessToken = await getAccessTokenSilently({
+          audience: "https://envisagepj005.azurewebsites.net",
         });
+        var insertFormUrl =
+          "https://envisagepj005.azurewebsites.net/insertFormTemp";
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + accessToken,
+          },
+          body: JSON.stringify(record),
+        };
+        console.log(JSON.stringify(record));
+
+        fetch(insertFormUrl, options)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (responseJson) {
+            console.log(responseJson);
+            setChecked(false);
+            setAddedNew(true);
+            reset();
+          });
+      }
+      insertFormDetailsData();
     } else {
       return;
     }
-  }, [record, readyToSubmit]);
+  }, [
+    record,
+    readyToSubmit,
+    reset,
+    setChecked,
+    setAddedNew,
+    getAccessTokenSilently,
+  ]);
 
-  function reset() {
+  /*   function reset() {
     setRecord({
       name: "",
       project: "",
@@ -153,18 +189,15 @@ export default function FormPopup(props) {
       drillNumber: "",
       pingOnJo: "",
       cheOnJo: "",
-      date: props.dateUsing,
+      date: dateUsing,
     });
     setReadyToSubmit(false);
     setDisplaySubmit(false);
-  }
+  } */
 
   return (
     <div className="formPopup">
-      <Zoom
-        in={props.checked}
-        style={{ transitionDelay: props.checked ? "250ms" : "0ms" }}
-      >
+      <Zoom in={checked} style={{ transitionDelay: checked ? "250ms" : "0ms" }}>
         <Card
           sx={{
             zIndex: "2",
