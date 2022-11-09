@@ -18,6 +18,11 @@ export default function OutlineCard(props) {
       JSON.parse(decodeURIComponent(event.currentTarget.dataset.record))
     );
     setToggleTable(true);
+    if (props.headerRef.current) {
+      props.headerRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   }
 
   function expandAndScroll(e) {
@@ -25,16 +30,25 @@ export default function OutlineCard(props) {
     if (e.target.classList.contains("clicked")) {
       e.target.classList.remove("clicked");
       setDivExpand(false);
+      /*      if (card) {
+        card.scrollIntoView(
+         {
+          behavior: "smooth",
+          block: "start",
+        } 
+        );
+      } */
     } else {
       e.target.classList.add("clicked");
       setDivExpand(true);
-    }
-    const card = cardRef.current;
-    if (card) {
-      card.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      /*    if (card) {
+        card.scrollIntoView(
+        {
+          behavior: "smooth",
+          block: "end",
+        }
+        );
+      } */
     }
   }
 
@@ -49,6 +63,17 @@ export default function OutlineCard(props) {
   const [toggleTable, setToggleTable] = useState(false);
   const [ready, setReady] = useState(false);
   const [summary, setSummary] = useState([]);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (divExpand) {
+      if (card) {
+        card.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [divExpand]);
 
   useEffect(() => {
     const rockObjtemp = props.timeSlotRecord.map(
