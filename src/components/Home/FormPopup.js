@@ -93,7 +93,7 @@ export default function FormPopup({
       ).toISOString(), // But override this one
       name: Object.keys(user).includes("https://envisage-dt/claims/Operator")
         ? user["https://envisage-dt/claims/Operator"]
-        : "dummy",
+        : "測試",
     }));
     setReadyToSubmit(true);
   };
