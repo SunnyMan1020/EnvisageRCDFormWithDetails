@@ -30,6 +30,7 @@
   z-index: 1;
   left: 50%;
   transform: translate(-50%, 0);
+  pointer-events: none;
 }
 
 .Cards .project p {
