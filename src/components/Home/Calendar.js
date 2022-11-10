@@ -1,4 +1,5 @@
 import DatePicker from "react-datepicker";
+import { forwardRef } from "react";
 import { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Calendar.css";
@@ -8,6 +9,11 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 registerLocale("zhHK", zhHK);
 
 export default function Calendar(props) {
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="example-custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
   return (
     <div className="calendar">
       <CalendarTodayIcon sx={{ color: "white" }} />
@@ -18,6 +24,7 @@ export default function Calendar(props) {
           props.prevDateUsingRef.current = props.Date;
           props.setDate(date);
         }}
+        customInput={<ExampleCustomInput />}
         dateFormat="yyyy年MM月dd日"
         locale="zhHK"
       />
