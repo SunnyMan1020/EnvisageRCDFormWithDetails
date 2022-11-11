@@ -66,7 +66,7 @@ const Login = () => {
             >
               <LoginOutlinedIcon sx={{ color: "#fff", fontSize: "60px" }} />
             </IconButton>
-            <button onClick={() => logoutWithRedirect()}>Log Out</button>
+            {/*        <button onClick={() => logoutWithRedirect()}>Log Out</button> */}
           </Box>
         )}
         {isAuthenticated && <Navigate to="/home" />}
