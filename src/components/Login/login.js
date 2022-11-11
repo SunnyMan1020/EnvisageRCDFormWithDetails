@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { Triangle } from "react-loader-spinner";
 import IconButton from "@mui/material/IconButton";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
@@ -9,7 +9,27 @@ import Typography from "@mui/material/Typography";
 import "./login.css";
 
 const Login = () => {
-  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, isLoading } = useAuth0();
+  const logoutWithRedirect = async () =>
+    logout({
+      returnTo: window.location.origin,
+    });
+
+  let location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+    if (location.search.includes("error")) {
+      logoutWithRedirect();
+    }
+  }, [location]);
+
+  /*  useEffect(() => {
+    if (!isAuthenticated) {
+      logoutWithRedirect();
+    }
+  }, [isAuthenticated]); */
+
   if (isLoading) {
     return (
       <div className="loginLoader">
@@ -36,24 +56,17 @@ const Login = () => {
               width="max-content"
               disableRipple
               aria-label="login"
-              onClick={() =>
+              onClick={async () => {
+                await logoutWithRedirect();
                 loginWithRedirect({
                   /*   redirectUri: `${window.location.origin}`, */
                   appState: { returnTo: "/home" },
-                })
-              }
+                });
+              }}
             >
               <LoginOutlinedIcon sx={{ color: "#fff", fontSize: "60px" }} />
             </IconButton>
-            {/*   <button
-              onClick={() =>
-                loginWithRedirect({
-                  appState: { returnTo: "/home" },
-                })
-              }
-            >
-              Log In
-            </button> */}
+            <button onClick={() => logoutWithRedirect()}>Log Out</button>
           </Box>
         )}
         {isAuthenticated && <Navigate to="/home" />}

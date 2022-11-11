@@ -1,8 +1,9 @@
 import "./Header.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "./Calendar";
 import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
@@ -12,7 +13,7 @@ import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 
 export default function Header(props) {
-  const { logout } = useAuth0();
+  const { logout, user } = useAuth0();
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin,
@@ -26,7 +27,15 @@ export default function Header(props) {
     props.setChecked(true);
   }
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const actions = [
+    {
+      icon: <AccountCircleIcon sx={{ color: "#5bc0be" }} />,
+      name: user.nickname,
+    },
     {
       icon: <LogoutIcon sx={{ color: "#5bc0be" }} />,
       name: "登出",
