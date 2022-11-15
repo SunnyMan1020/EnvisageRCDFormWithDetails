@@ -1662,16 +1662,32 @@ export default function DetailsTable({
             ],
           },
           {
-            Header: "樁通長度",
-            className: "nonInterval nonIntervalFirst",
+            Header: () => {
+              return (
+                <div className="columnFlex">
+                  <span>樁通長度</span>
+                  <span>(m)</span>
+                </div>
+              );
+            },
+            id: "樁通長度",
+            className: "nonInterval nonIntervalFirst withUnit",
             rowSpan: "2",
             columns: [
               {
-                Header: "樁通長度",
+                Header: () => {
+                  return (
+                    <div className="columnFlex">
+                      <span>樁通長度</span>
+                      <span>(m)</span>
+                    </div>
+                  );
+                },
+                id: "樁通長度",
                 accessor: "樁通長度",
                 displayNone: true,
                 Cell: EditableCell,
-                className: "nonInterval nonIntervalFirst",
+                className: "nonInterval nonIntervalFirst withUnit",
               },
             ],
           },
