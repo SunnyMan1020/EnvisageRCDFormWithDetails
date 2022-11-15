@@ -22,6 +22,7 @@ export default function DetailsTable({
       original: true,
       Time_Slot: "06:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -49,6 +50,7 @@ export default function DetailsTable({
     {
       Time_Slot: "07:00 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -76,6 +78,7 @@ export default function DetailsTable({
     {
       Time_Slot: "07:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -103,6 +106,7 @@ export default function DetailsTable({
     {
       Time_Slot: "08:00 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -130,6 +134,7 @@ export default function DetailsTable({
     {
       Time_Slot: "08:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -159,6 +164,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -183,6 +189,7 @@ export default function DetailsTable({
     },
     {
       Time_Slot: "09:30 AM",
+      樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
@@ -210,6 +217,7 @@ export default function DetailsTable({
     },
     {
       Time_Slot: "10:00 AM",
+      樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
@@ -238,6 +246,7 @@ export default function DetailsTable({
     {
       Time_Slot: "10:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -267,6 +276,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -294,6 +304,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -320,6 +331,7 @@ export default function DetailsTable({
       Time_Slot: "12:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -347,6 +359,7 @@ export default function DetailsTable({
       Time_Slot: "12:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -374,6 +387,7 @@ export default function DetailsTable({
       Time_Slot: "01:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -401,6 +415,7 @@ export default function DetailsTable({
       Time_Slot: "01:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -428,6 +443,7 @@ export default function DetailsTable({
       Time_Slot: "02:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -455,6 +471,7 @@ export default function DetailsTable({
       Time_Slot: "02:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -484,6 +501,7 @@ export default function DetailsTable({
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
+      樁通長度: "",
       二級石: false,
       三級石: false,
       四級石: false,
@@ -510,6 +528,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -538,6 +557,7 @@ export default function DetailsTable({
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
+      樁通長度: "",
       二級石: false,
       三級石: false,
       四級石: false,
@@ -564,6 +584,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -589,6 +610,7 @@ export default function DetailsTable({
     {
       Time_Slot: "05:00 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -617,6 +639,7 @@ export default function DetailsTable({
       Time_Slot: "05:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -643,6 +666,7 @@ export default function DetailsTable({
     {
       Time_Slot: "06:00 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -671,6 +695,7 @@ export default function DetailsTable({
       Time_Slot: "06:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -697,6 +722,7 @@ export default function DetailsTable({
     {
       Time_Slot: "07:00 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -726,6 +752,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -751,6 +778,7 @@ export default function DetailsTable({
     {
       Time_Slot: "08:00 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -779,6 +807,7 @@ export default function DetailsTable({
       Time_Slot: "08:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -806,6 +835,7 @@ export default function DetailsTable({
       Time_Slot: "09:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -833,6 +863,7 @@ export default function DetailsTable({
       Time_Slot: "09:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -860,6 +891,7 @@ export default function DetailsTable({
       Time_Slot: "10:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -886,6 +918,7 @@ export default function DetailsTable({
     {
       Time_Slot: "10:30 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -913,6 +946,7 @@ export default function DetailsTable({
     {
       Time_Slot: "11:00 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -940,6 +974,7 @@ export default function DetailsTable({
     {
       Time_Slot: "11:30 PM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -969,6 +1004,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -994,6 +1030,7 @@ export default function DetailsTable({
     {
       Time_Slot: "12:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1021,6 +1058,7 @@ export default function DetailsTable({
     {
       Time_Slot: "01:00 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1048,6 +1086,7 @@ export default function DetailsTable({
     {
       Time_Slot: "01:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1077,6 +1116,7 @@ export default function DetailsTable({
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
+      樁通長度: "",
       一級石: false,
       二級石: false,
       三級石: false,
@@ -1101,6 +1141,7 @@ export default function DetailsTable({
     },
     {
       Time_Slot: "02:30 AM",
+      樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
@@ -1128,6 +1169,7 @@ export default function DetailsTable({
     },
     {
       Time_Slot: "03:00 AM",
+      樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
@@ -1156,6 +1198,7 @@ export default function DetailsTable({
     {
       Time_Slot: "03:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1184,6 +1227,7 @@ export default function DetailsTable({
       Time_Slot: "04:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      樁通長度: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1209,6 +1253,7 @@ export default function DetailsTable({
     },
     {
       Time_Slot: "04:30 AM",
+      樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
@@ -1237,6 +1282,7 @@ export default function DetailsTable({
     {
       Time_Slot: "05:00 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1264,6 +1310,7 @@ export default function DetailsTable({
     {
       Time_Slot: "05:30 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1291,6 +1338,7 @@ export default function DetailsTable({
     {
       Time_Slot: "06:00 AM",
       Depth: "",
+      樁通長度: "",
       Time_Slot_SubmitTime: "",
       Ref_Level: "",
       一級石: false,
@@ -1388,7 +1436,7 @@ export default function DetailsTable({
   }, [dataToFetch, getAccessTokenSilently]);
 
   function replacer(i, val) {
-    if (i === "Depth" || i === "Ref_Level") {
+    if (i === "Depth" || i === "Ref_Level" || i === "樁通長度") {
       if (val === null) {
         return ""; // change null to empty string
       } else {
@@ -1432,6 +1480,8 @@ export default function DetailsTable({
               fetchBody["Depth"] === "" ? null : fetchBody["Depth"];
             fetchBody["Ref_Level"] =
               fetchBody["Ref_Level"] === "" ? null : fetchBody["Ref_Level"];
+            fetchBody["樁通長度"] =
+              fetchBody["樁通長度"] === "" ? null : fetchBody["樁通長度"];
             setDataToFetch(fetchBody);
             return { ...obj, [keyToChange]: !obj[keyToChange] };
           }
@@ -1492,6 +1542,7 @@ export default function DetailsTable({
           temp["Depth"] = temp["Depth"] === "" ? null : temp["Depth"];
           temp["Ref_Level"] =
             temp["Ref_Level"] === "" ? null : temp["Ref_Level"];
+          temp["樁通長度"] = temp["樁通長度"] === "" ? null : temp["樁通長度"];
           setDataToFetch(temp);
           return {
             ...prevState[rowIndex],
@@ -1526,6 +1577,8 @@ export default function DetailsTable({
       desire["Depth"] = desire["Depth"] === "" ? null : desire["Depth"];
       desire["Ref_Level"] =
         desire["Ref_Level"] === "" ? null : desire["Ref_Level"];
+      desire["樁通長度"] =
+        desire["樁通長度"] === "" ? null : desire["樁通長度"];
       console.log(desire);
       const accessToken = await getAccessTokenSilently({
         audience: "https://envisagepj005.azurewebsites.net",
@@ -1578,7 +1631,11 @@ export default function DetailsTable({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
-        type={id === "Depth" || id === "Ref_Level" ? "number" : "text"}
+        type={
+          id === "Depth" || id === "Ref_Level" || id === "樁通長度"
+            ? "number"
+            : "text"
+        }
       />
     );
   };
@@ -1601,6 +1658,20 @@ export default function DetailsTable({
                 displayNone: true,
                 className: "nonInterval nonIntervalFirst Time_Slot",
                 sticky: "left",
+              },
+            ],
+          },
+          {
+            Header: "樁通長度",
+            className: "nonInterval nonIntervalFirst",
+            rowSpan: "2",
+            columns: [
+              {
+                Header: "樁通長度",
+                accessor: "樁通長度",
+                displayNone: true,
+                Cell: EditableCell,
+                className: "nonInterval nonIntervalFirst",
               },
             ],
           },
