@@ -1891,7 +1891,7 @@ export default function DetailsTable({
             ],
           },
           {
-            Header: "工作慨況",
+            Header: "工作概況",
             className: "nonInterval nonIntervalThird action",
             columns: [
               {
