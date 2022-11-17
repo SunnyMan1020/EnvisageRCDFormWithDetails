@@ -1,13 +1,13 @@
 import "./DetailsTable.css";
 import { useTable } from "react-table";
 import { useSticky } from "react-table-sticky";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import ToggleButton from "@mui/material/ToggleButton";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCallback } from "react";
+import { DateTime } from "luxon";
 
 export default function DetailsTable({
   record,
@@ -24,6 +24,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -52,6 +53,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -80,6 +82,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -108,6 +111,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -136,6 +140,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -163,6 +168,7 @@ export default function DetailsTable({
       Time_Slot: "09:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -192,6 +198,7 @@ export default function DetailsTable({
       樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -220,6 +227,7 @@ export default function DetailsTable({
       樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -248,6 +256,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -275,6 +284,7 @@ export default function DetailsTable({
       Time_Slot: "11:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -303,6 +313,7 @@ export default function DetailsTable({
       Time_Slot: "11:30 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -331,6 +342,7 @@ export default function DetailsTable({
       Time_Slot: "12:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -359,6 +371,7 @@ export default function DetailsTable({
       Time_Slot: "12:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -387,6 +400,7 @@ export default function DetailsTable({
       Time_Slot: "01:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -415,6 +429,7 @@ export default function DetailsTable({
       Time_Slot: "01:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -443,6 +458,7 @@ export default function DetailsTable({
       Time_Slot: "02:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -471,6 +487,7 @@ export default function DetailsTable({
       Time_Slot: "02:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -499,6 +516,7 @@ export default function DetailsTable({
       Time_Slot: "03:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       樁通長度: "",
@@ -527,6 +545,7 @@ export default function DetailsTable({
       Time_Slot: "03:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -555,6 +574,7 @@ export default function DetailsTable({
       Time_Slot: "04:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       樁通長度: "",
@@ -583,6 +603,7 @@ export default function DetailsTable({
       Time_Slot: "04:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -612,6 +633,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -639,6 +661,7 @@ export default function DetailsTable({
       Time_Slot: "05:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -668,6 +691,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -695,6 +719,7 @@ export default function DetailsTable({
       Time_Slot: "06:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -724,6 +749,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -751,6 +777,7 @@ export default function DetailsTable({
       Time_Slot: "07:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -780,6 +807,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -807,6 +835,7 @@ export default function DetailsTable({
       Time_Slot: "08:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -835,6 +864,7 @@ export default function DetailsTable({
       Time_Slot: "09:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -863,6 +893,7 @@ export default function DetailsTable({
       Time_Slot: "09:30 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -891,6 +922,7 @@ export default function DetailsTable({
       Time_Slot: "10:00 PM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -920,6 +952,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -948,6 +981,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -976,6 +1010,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1003,6 +1038,7 @@ export default function DetailsTable({
       Time_Slot: "12:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -1032,6 +1068,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1060,6 +1097,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1088,6 +1126,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1115,6 +1154,7 @@ export default function DetailsTable({
       Time_Slot: "02:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       樁通長度: "",
       一級石: false,
@@ -1144,6 +1184,7 @@ export default function DetailsTable({
       樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1172,6 +1213,7 @@ export default function DetailsTable({
       樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1200,6 +1242,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1227,6 +1270,7 @@ export default function DetailsTable({
       Time_Slot: "04:00 AM",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       樁通長度: "",
       Ref_Level: "",
       一級石: false,
@@ -1256,6 +1300,7 @@ export default function DetailsTable({
       樁通長度: "",
       Depth: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1284,6 +1329,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1312,6 +1358,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1340,6 +1387,7 @@ export default function DetailsTable({
       Depth: "",
       樁通長度: "",
       Time_Slot_SubmitTime: "",
+      Time_Slot_ISO: "",
       Ref_Level: "",
       一級石: false,
       二級石: false,
@@ -1476,6 +1524,12 @@ export default function DetailsTable({
             fetchBody["Time_Slot_SubmitTime"] = new Date(
               dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
             ).toISOString();
+            fetchBody["Time_Slot_ISO"] = DateTime.fromFormat(
+              fetchBody["Time_Slot"],
+              "t",
+              { zone: "utc" }
+            ).toString();
+            console.log(fetchBody["Time_Slot_ISO"]);
             fetchBody["Depth"] =
               fetchBody["Depth"] === "" ? null : fetchBody["Depth"];
             fetchBody["Ref_Level"] =
@@ -1539,6 +1593,11 @@ export default function DetailsTable({
           temp["Time_Slot_SubmitTime"] = new Date(
             dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
           ).toISOString();
+          temp["Time_Slot_ISO"] = DateTime.fromFormat(temp["Time_Slot"], "t", {
+            zone: "utc",
+          }).toString();
+          console.log(temp["Time_Slot_ISO"]);
+
           temp["Depth"] = temp["Depth"] === "" ? null : temp["Depth"];
           temp["Ref_Level"] =
             temp["Ref_Level"] === "" ? null : temp["Ref_Level"];
@@ -1574,6 +1633,10 @@ export default function DetailsTable({
       desire["Time_Slot_SubmitTime"] = new Date(
         dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
       ).toISOString();
+      desire["Time_Slot_ISO"] = DateTime.fromFormat(desire["Time_Slot"], "t", {
+        zone: "utc",
+      }).toString();
+      console.log(desire["Time_Slot_ISO"]);
       desire["Depth"] = desire["Depth"] === "" ? null : desire["Depth"];
       desire["Ref_Level"] =
         desire["Ref_Level"] === "" ? null : desire["Ref_Level"];
