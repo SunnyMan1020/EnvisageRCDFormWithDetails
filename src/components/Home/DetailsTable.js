@@ -1529,7 +1529,7 @@ export default function DetailsTable({
               "t",
               { zone: "utc" }
             ).toString();
-            console.log(fetchBody["Time_Slot_ISO"]);
+            console.log("Time_Slot_ISO", fetchBody["Time_Slot_ISO"]);
             fetchBody["Depth"] =
               fetchBody["Depth"] === "" ? null : fetchBody["Depth"];
             fetchBody["Ref_Level"] =
@@ -1596,7 +1596,7 @@ export default function DetailsTable({
           temp["Time_Slot_ISO"] = DateTime.fromFormat(temp["Time_Slot"], "t", {
             zone: "utc",
           }).toString();
-          console.log(temp["Time_Slot_ISO"]);
+          console.log("Time_Slot_ISO", temp["Time_Slot_ISO"]);
 
           temp["Depth"] = temp["Depth"] === "" ? null : temp["Depth"];
           temp["Ref_Level"] =
@@ -1636,7 +1636,7 @@ export default function DetailsTable({
       desire["Time_Slot_ISO"] = DateTime.fromFormat(desire["Time_Slot"], "t", {
         zone: "utc",
       }).toString();
-      console.log(desire["Time_Slot_ISO"]);
+      console.log("Time_Slot_ISO", desire["Time_Slot_ISO"]);
       desire["Depth"] = desire["Depth"] === "" ? null : desire["Depth"];
       desire["Ref_Level"] =
         desire["Ref_Level"] === "" ? null : desire["Ref_Level"];
