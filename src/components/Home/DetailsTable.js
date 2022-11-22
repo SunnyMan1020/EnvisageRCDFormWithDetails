@@ -1419,6 +1419,12 @@ export default function DetailsTable({
   const [selected, setSelected] = useState(null);
   const ref = useRef(null);
 
+  function filterItems(arr) {
+    return Object.keys(arr).filter(function (el) {
+      return arr[el] === true;
+    });
+  }
+
   useEffect(() => {
     async function getTimeSlotData() {
       const accessToken = await getAccessTokenSilently({
@@ -1479,7 +1485,73 @@ export default function DetailsTable({
     }
     if (Object.keys(dataToFetch).length) {
       console.log("dataToFetch", dataToFetch);
-      mergeData();
+      var actionObjtemp = (({
+        直鑽,
+        追通鑽,
+        放大,
+        換水清底,
+        加鑽杆,
+        維修,
+        裝嵌,
+        拆機,
+        檢查油水,
+        磨通,
+        換鑽頭,
+        清沙缸,
+        執窿,
+        待機,
+      }) => ({
+        直鑽,
+        追通鑽,
+        放大,
+        換水清底,
+        加鑽杆,
+        維修,
+        裝嵌,
+        拆機,
+        檢查油水,
+        磨通,
+        換鑽頭,
+        清沙缸,
+        執窿,
+        待機,
+      }))(dataToFetch);
+
+      var rockObjtemp = (({
+        一級石,
+        二級石,
+        三級石,
+        四級石,
+        黃花沙,
+        石屎,
+      }) => ({
+        一級石,
+        二級石,
+        三級石,
+        四級石,
+        黃花沙,
+        石屎,
+      }))(dataToFetch);
+
+      console.log(filterItems(actionObjtemp));
+      console.log(filterItems(rockObjtemp));
+
+      var allInputNull =
+        dataToFetch.樁通長度 === null &&
+        dataToFetch.Ref_Level === null &&
+        dataToFetch.Depth === null &&
+        dataToFetch.Remark === "";
+      console.log(allInputNull);
+
+      if (
+        filterItems(actionObjtemp).length < 1 &&
+        filterItems(rockObjtemp) < 1 &&
+        allInputNull
+      ) {
+        console.log("Shouldnt be saved");
+      } else {
+        mergeData();
+      }
     }
   }, [dataToFetch, getAccessTokenSilently]);
 
@@ -1536,6 +1608,7 @@ export default function DetailsTable({
               fetchBody["Ref_Level"] === "" ? null : fetchBody["Ref_Level"];
             fetchBody["樁通長度"] =
               fetchBody["樁通長度"] === "" ? null : fetchBody["樁通長度"];
+            console.log("input fetchBody", fetchBody);
             setDataToFetch(fetchBody);
             return { ...obj, [keyToChange]: !obj[keyToChange] };
           }
@@ -1603,6 +1676,7 @@ export default function DetailsTable({
             temp["Ref_Level"] === "" ? null : temp["Ref_Level"];
           temp["樁通長度"] = temp["樁通長度"] === "" ? null : temp["樁通長度"];
           setDataToFetch(temp);
+          console.log(temp);
           return {
             ...prevState[rowIndex],
             [columnId]: value,
@@ -1614,7 +1688,7 @@ export default function DetailsTable({
     setSelected(rowIndex);
   }
 
-  async function fetchSQL(rowIndex, columnId, value) {
+  /*  async function fetchSQL(rowIndex, columnId, value) {
     console.log(data);
     console.log(usedDataFromSQL);
     if (data.length > 0) {
@@ -1658,7 +1732,7 @@ export default function DetailsTable({
       };
       fetch(mergeDataUrl, options);
     }
-  }
+  } */
 
   const EditableCell = ({
     value: initialValue,
@@ -2293,7 +2367,7 @@ export default function DetailsTable({
         columns,
         data,
         updateMyData,
-        fetchSQL,
+        /*  fetchSQL, */
       },
       useSticky
     );
