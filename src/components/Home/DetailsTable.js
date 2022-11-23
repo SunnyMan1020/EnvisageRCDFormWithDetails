@@ -1597,8 +1597,8 @@ export default function DetailsTable({
               dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
             ).toISOString();
             fetchBody["Time_Slot_ISO"] = DateTime.fromFormat(
-              fetchBody["Time_Slot"],
-              "t",
+              `${record.Date.slice(0, 10)} ${fetchBody.Time_Slot}`,
+              "yyyy-MM-dd t",
               { zone: "utc" }
             ).toString();
             console.log("Time_Slot_ISO", fetchBody["Time_Slot_ISO"]);
@@ -1666,9 +1666,12 @@ export default function DetailsTable({
           temp["Time_Slot_SubmitTime"] = new Date(
             dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset())
           ).toISOString();
-          temp["Time_Slot_ISO"] = DateTime.fromFormat(temp["Time_Slot"], "t", {
-            zone: "utc",
-          }).toString();
+          temp["Time_Slot_ISO"] = DateTime.fromFormat(
+            `${record.Date.slice(0, 10)} ${temp.Time_Slot}`,
+            "yyyy-MM-dd t",
+            { zone: "utc" }
+          ).toString();
+          console.log(`${record.Date.slice(0, 10)} ${temp.Time_Slot}`);
           console.log("Time_Slot_ISO", temp["Time_Slot_ISO"]);
 
           temp["Depth"] = temp["Depth"] === "" ? null : temp["Depth"];
