@@ -376,7 +376,7 @@ export default function OutlineCard({
                     }}
                     color="#5bc0be"
                   >
-                    {temp.Depth} 米
+                    {temp.Depth !== null ? `${temp.Depth} 米` : ""}
                   </Typography>
                   {ready && (
                     <Fragment>
