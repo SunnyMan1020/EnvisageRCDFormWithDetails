@@ -1904,8 +1904,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -1926,8 +1926,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -1948,8 +1948,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -1970,8 +1970,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -1992,8 +1992,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2014,8 +2014,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2042,8 +2042,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2064,8 +2064,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2086,8 +2086,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2108,8 +2108,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2130,8 +2130,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2152,8 +2152,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2174,8 +2174,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2196,8 +2196,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2218,8 +2218,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2240,8 +2240,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2262,8 +2262,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2284,8 +2284,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2306,8 +2306,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
@@ -2328,8 +2328,8 @@ export default function DetailsTable({
                   <ToggleButton
                     sx={{
                       padding: "0",
-                      width: "-webkit-fill-available",
-                      height: "-webkit-fill-available",
+                      width: "100%",
+                      height: "100%",
                       position: "unset",
                     }}
                     disableRipple
