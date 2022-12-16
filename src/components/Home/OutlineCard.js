@@ -200,7 +200,7 @@ export default function OutlineCard({
             padding: "10px",
             transition: "max-height 1s ease",
             "&.clicked": {
-              maxHeight: "100vh",
+              maxHeight: "200vh",
               transition: "max-height 2s ease",
             },
           }}
