@@ -1654,6 +1654,10 @@ export default function DetailsTable({
     setSelected(row.index);
   } */
 
+  function highLightMyData(rowIndex, columnId, value) {
+    setSelected(rowIndex);
+  }
+
   function updateMyData(rowIndex, columnId, value) {
     setData((prevState) =>
       prevState.map((row, index) => {
@@ -1737,6 +1741,10 @@ export default function DetailsTable({
     }
   } */
 
+  useEffect(() => {
+    console.log("selected", selected);
+  }, [selected]);
+
   const EditableCell = ({
     value: initialValue,
     row: { index },
@@ -1760,6 +1768,13 @@ export default function DetailsTable({
        */
     };
 
+    const onClick = () => {
+      console.log(index);
+      console.log(id);
+      console.log(value);
+      highLightMyData(index, id, value);
+    };
+
     // If the initialValue is changed external, sync it up with our state
     useEffect(() => {
       setValue(initialValue);
@@ -1771,6 +1786,7 @@ export default function DetailsTable({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        onClick={onClick}
         type={
           id === "Depth" || id === "Ref_Level" || id === "樁通長度"
             ? "number"
