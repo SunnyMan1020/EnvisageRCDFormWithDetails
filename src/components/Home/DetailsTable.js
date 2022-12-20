@@ -1543,15 +1543,15 @@ export default function DetailsTable({
         dataToFetch.Remark === "";
       console.log(allInputNull);
 
-      if (
+      /*  if (
         filterItems(actionObjtemp).length < 1 &&
         filterItems(rockObjtemp) < 1 &&
         allInputNull
       ) {
         console.log("Shouldnt be saved");
-      } else {
-        mergeData();
-      }
+      } else { */
+      mergeData();
+      /*  } */
     }
   }, [dataToFetch, getAccessTokenSilently]);
 
