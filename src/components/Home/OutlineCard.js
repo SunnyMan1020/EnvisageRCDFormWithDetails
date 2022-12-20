@@ -139,7 +139,7 @@ export default function OutlineCard({
     });
 
     var tempSummary = [];
-
+    console.log("timeSlotRecord", timeSlotRecord);
     timeSlotRecord.forEach((rec, index) => {
       tempSummary.push({
         Time_Slot: rec.Time_Slot,
@@ -345,85 +345,98 @@ export default function OutlineCard({
               歷程
             </Typography>
             {timeSlotRecord.map((temp) => {
-              return (
-                <div
-                  className="DetailsPreview"
-                  key={temp["Time_Slot_SubmitTime"]}
-                >
-                  <Typography
-                    sx={{
-                      fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2vw", // theme.breakpoints.up('md')
-                        lg: "1.75vw", // theme.breakpoints.up('lg')
-                        xl: "2vw", // theme.breakpoints.up('xl')
-                      },
-                    }}
-                    color="#5bc0be"
+              if (
+                temp.Depth !== null ||
+                summary
+                  .filter((obj) => {
+                    return obj.Time_Slot === temp.Time_Slot;
+                  })[0]
+                  ?.Grade.join(",").length > 0 ||
+                summary
+                  .filter((obj) => {
+                    return obj.Time_Slot === temp.Time_Slot;
+                  })[0]
+                  ?.Action.join(",").length > 0
+              )
+                return (
+                  <div
+                    className="DetailsPreview"
+                    key={temp["Time_Slot_SubmitTime"]}
                   >
-                    {temp.Time_Slot}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: {
-                        xs: "3.5vw", // theme.breakpoints.up('xs')
-                        sm: "3vw", // theme.breakpoints.up('sm')
-                        md: "2vw", // theme.breakpoints.up('md')
-                        lg: "1.75vw", // theme.breakpoints.up('lg')
-                        xl: "2vw", // theme.breakpoints.up('xl')
-                      },
-                    }}
-                    color="#5bc0be"
-                  >
-                    {temp.Depth !== null ? `${temp.Depth} 米` : ""}
-                  </Typography>
-                  {ready && (
-                    <Fragment>
-                      <Typography
-                        sx={{
-                          fontSize: {
-                            xs: "3.5vw", // theme.breakpoints.up('xs')
-                            sm: "3vw", // theme.breakpoints.up('sm')
-                            md: "2vw", // theme.breakpoints.up('md')
-                            lg: "1.75vw", // theme.breakpoints.up('lg')
-                            xl: "2vw", // theme.breakpoints.up('xl')
-                          },
-                        }}
-                        color="#5bc0be"
-                      >
-                        {summary
-                          .filter((obj) => {
-                            return obj.Time_Slot === temp.Time_Slot;
-                          })[0]
-                          ?.Grade.join(",")}
-                      </Typography>
-                    </Fragment>
-                  )}
-                  {ready && (
-                    <Fragment>
-                      <Typography
-                        sx={{
-                          fontSize: {
-                            xs: "3.5vw", // theme.breakpoints.up('xs')
-                            sm: "3vw", // theme.breakpoints.up('sm')
-                            md: "2vw", // theme.breakpoints.up('md')
-                            lg: "1.75vw", // theme.breakpoints.up('lg')
-                            xl: "2vw", // theme.breakpoints.up('xl')
-                          },
-                        }}
-                        color="#5bc0be"
-                      >
-                        {summary
-                          .filter((obj) => {
-                            return obj.Time_Slot === temp.Time_Slot;
-                          })[0]
-                          ?.Action.join(",")}
-                      </Typography>
-                    </Fragment>
-                  )}
-                </div>
-              );
+                    <Typography
+                      sx={{
+                        fontSize: {
+                          xs: "3.5vw", // theme.breakpoints.up('xs')
+                          sm: "3vw", // theme.breakpoints.up('sm')
+                          md: "2vw", // theme.breakpoints.up('md')
+                          lg: "1.75vw", // theme.breakpoints.up('lg')
+                          xl: "2vw", // theme.breakpoints.up('xl')
+                        },
+                      }}
+                      color="#5bc0be"
+                    >
+                      {temp.Time_Slot}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        fontSize: {
+                          xs: "3.5vw", // theme.breakpoints.up('xs')
+                          sm: "3vw", // theme.breakpoints.up('sm')
+                          md: "2vw", // theme.breakpoints.up('md')
+                          lg: "1.75vw", // theme.breakpoints.up('lg')
+                          xl: "2vw", // theme.breakpoints.up('xl')
+                        },
+                      }}
+                      color="#5bc0be"
+                    >
+                      {temp.Depth !== null ? `${temp.Depth} 米` : ""}
+                    </Typography>
+                    {ready && (
+                      <Fragment>
+                        <Typography
+                          sx={{
+                            fontSize: {
+                              xs: "3.5vw", // theme.breakpoints.up('xs')
+                              sm: "3vw", // theme.breakpoints.up('sm')
+                              md: "2vw", // theme.breakpoints.up('md')
+                              lg: "1.75vw", // theme.breakpoints.up('lg')
+                              xl: "2vw", // theme.breakpoints.up('xl')
+                            },
+                          }}
+                          color="#5bc0be"
+                        >
+                          {summary
+                            .filter((obj) => {
+                              return obj.Time_Slot === temp.Time_Slot;
+                            })[0]
+                            ?.Grade.join(",")}
+                        </Typography>
+                      </Fragment>
+                    )}
+                    {ready && (
+                      <Fragment>
+                        <Typography
+                          sx={{
+                            fontSize: {
+                              xs: "3.5vw", // theme.breakpoints.up('xs')
+                              sm: "3vw", // theme.breakpoints.up('sm')
+                              md: "2vw", // theme.breakpoints.up('md')
+                              lg: "1.75vw", // theme.breakpoints.up('lg')
+                              xl: "2vw", // theme.breakpoints.up('xl')
+                            },
+                          }}
+                          color="#5bc0be"
+                        >
+                          {summary
+                            .filter((obj) => {
+                              return obj.Time_Slot === temp.Time_Slot;
+                            })[0]
+                            ?.Action.join(",")}
+                        </Typography>
+                      </Fragment>
+                    )}
+                  </div>
+                );
             })}
           </CardContent>
           <CardActions
